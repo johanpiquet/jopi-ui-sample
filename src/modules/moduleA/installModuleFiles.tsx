@@ -1,0 +1,2 @@
+// The role of this file is to INSTALL the module FILE once deployed.
+// It's executed by the tools jopi module install dirToScan
