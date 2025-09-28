@@ -1,6 +1,8 @@
 import {jopiApp} from "jopi-rewrite";
 
-jopiApp.startApp(jopiEasy => {
+jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.new_webSite()
-        .enable_reactRouter(import.meta, "content");
+        .enable_reactRouter("content")
+
+        .add_module("moduleA")
 });
