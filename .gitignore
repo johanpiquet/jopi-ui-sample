@@ -1,0 +1,12 @@
+.idea
+node_modules
+temp
+.DS_Store
+__TODO.txt
+
+logs
+certs
+.turbo
+dist
+/tsconfig.tsbuildinfo
+/www-out/index.html
