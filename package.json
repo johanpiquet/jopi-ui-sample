@@ -14,8 +14,8 @@
     "build": "rm -rf ./dist; npx tsc",
     "clean": "rm -rf ./dist; rm -rf .turbo; rm tsconfig.tsbuildinfo",
     "tsc": "npx tsc",
-    "devNodeUI": "JOPI_LOG=0 npx jopin --jopi-dev dist/index.js",
-    "devBunUI": "bunx jopib --jopi-dev src/index.ts"
+    "devNodeUI": "JOPI_LOG=0 npx jopin dist/index.js",
+    "devBunUI": "bunx jopib src/index.ts"
   },
 
   "devDependencies": {
