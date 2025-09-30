@@ -1,6 +1,6 @@
 import {Composite, usePageTitle} from "jopi-rewrite-ui";
 import React from "react";
-import {Button} from "@/ui/button";
+import {Button} from "@/shadcn/components/ui/button";
 
 export default function() {
     usePageTitle("Home");

@@ -29,9 +29,7 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@/uiLib/*": ["./src/uiLib/*"],
-      "@/ui/*": ["./src/uiComponents/ui/*"],
-      "@/uiComponents/*": ["./src/uiComponents/*"]
+      "@/shadcn/*": ["./src/shadcn/*"]
     }
   },
 
