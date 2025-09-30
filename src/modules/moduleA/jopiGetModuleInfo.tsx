@@ -4,5 +4,6 @@
 import {setCurrentModuleInfo} from "jopi-rewrite";
 
 setCurrentModuleInfo({
+    //moduleName: "jopi.moduleA",
     moduleTitle: "Module A"
 });

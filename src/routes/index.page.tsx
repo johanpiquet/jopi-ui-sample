@@ -1,11 +1,12 @@
-import {usePageTitle} from "jopi-rewrite-ui";
+import {Composite, usePageTitle} from "jopi-rewrite-ui";
 import React from "react";
 import {Button} from "@/ui/button";
 
 export default function() {
     usePageTitle("Home");
 
-    return <div>
+    return <>
         <Button variant="outline">Click me</Button>
-    </div>
+        <Composite name="admin.dashBoardPage.body" />
+    </>
 }
