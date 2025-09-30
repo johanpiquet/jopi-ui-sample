@@ -1,0 +1,1 @@
+alert('moduleA init! (uiInit.tsx)');
