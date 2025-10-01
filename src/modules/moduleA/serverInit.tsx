@@ -1,9 +1,9 @@
-// The role of this file, is to initialize the module once mounted.
+// The role of this file is to initialize the module once mounted.
 
-import {getModuleServerInitContent} from "jopi-rewrite";
+import {getModuleServerInitContext} from "jopi-rewrite";
 import {PriorityLevel} from "jopi-rewrite-ui";
 
-const modInit = getModuleServerInitContent();
+const modInit = getModuleServerInitContext();
 
 modInit.setModuleInfo({
     //moduleName: "jopi.moduleA",
@@ -12,12 +12,11 @@ modInit.setModuleInfo({
 
 modInit.addInitializer(PriorityLevel.Default, async () => {
     console.log('Module A initialized (Default)');
-});
 
-modInit.addInitializer(PriorityLevel.Low, async () => {
-    console.log('Module A initialized (Low)');
-});
+    const rootMenu = modInit.getMenuManager().getLeftMenu();
 
-modInit.addInitializer(PriorityLevel.VeryLow, async () => {
-    console.log('Module A initialized (VeryLow)');
+    let menu = rootMenu.selectItem(["aa", "bb"]);
+    menu.value = { title: "Menu entry" };
+
+    console.log("menu:", JSON.stringify(rootMenu.value, null, 4));
 });
