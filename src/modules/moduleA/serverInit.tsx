@@ -11,12 +11,5 @@ modInit.setModuleInfo({
 });
 
 modInit.addInitializer(PriorityLevel.Default, async () => {
-    console.log('Module A initialized (Default)');
-
-    const rootMenu = modInit.getMenuManager().getLeftMenu();
-
-    let menu = rootMenu.selectItem(["aa", "bb"]);
-    menu.value = { title: "Menu entry" };
-
-    console.log("menu:", JSON.stringify(rootMenu.value, null, 4));
+    console.log('Module A - Server initialized (Default)');
 });
