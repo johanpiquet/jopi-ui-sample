@@ -7,18 +7,18 @@
 
   "tailwind": {
     "config": "",
-    "css": "src/shadcn/styles/globals.css",
+    "css": "src/shared/styles/globals.css",
     "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
   },
 
   "aliases": {
-    "components": "@/shadcn/components",
-    "ui": "@/shadcn/components/ui",
-    "lib": "@/shadcn/lib",
-    "utils": "@/shadcn/lib/utils",
-    "hooks": "@/shadcn/hooks"
+    "components": "@/shared/components",
+    "ui": "@/shared/components/ui",
+    "lib": "@/shared/lib",
+    "utils": "@/shared/lib/utils",
+    "hooks": "@/shared/hooks"
   },
   "iconLibrary": "lucide"
 }

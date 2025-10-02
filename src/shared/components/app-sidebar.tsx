@@ -14,17 +14,17 @@ import {
   SquareTerminal,
 } from "lucide-react"
 
-import { NavMain } from "@/shadcn/components/nav-main"
-import { NavProjects } from "@/shadcn/components/nav-projects"
-import { NavUser } from "@/shadcn/components/nav-user"
-import { TeamSwitcher } from "@/shadcn/components/team-switcher"
+import { NavMain } from "@/shared/components/nav-main"
+import { NavProjects } from "@/shared/components/nav-projects"
+import { NavUser } from "@/shared/components/nav-user"
+import { TeamSwitcher } from "@/shared/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/shadcn/components/ui/sidebar"
+} from "@/shared/components/ui/sidebar"
 
 // This is sample data.
 const data = {

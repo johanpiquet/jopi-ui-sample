@@ -29,7 +29,7 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@/shadcn/*": ["./src/shadcn/*"]
+      "@/shared/*": ["./src/shared/*"]
     }
   },
 
