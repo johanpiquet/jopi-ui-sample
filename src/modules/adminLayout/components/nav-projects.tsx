@@ -4,8 +4,7 @@ import {
   Folder,
   Forward,
   MoreHorizontal,
-  Trash2,
-  type LucideIcon,
+  Trash2
 } from "lucide-react"
 
 import {
@@ -24,16 +23,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/components/ui/sidebar"
+import {type MenuItem} from "jopi-rewrite-ui";
 
-export function NavProjects({
-  projects,
-}: {
-  projects: {
-    title: string
-    url: string
-    icon: LucideIcon
-  }[]
-}) {
+export function NavProjects({projects}: { projects: MenuItem[] }) {
   const { isMobile } = useSidebar()
 
   return (

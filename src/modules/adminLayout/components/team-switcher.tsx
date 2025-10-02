@@ -18,16 +18,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/components/ui/sidebar"
+import type {MenuItem} from "jopi-rewrite-ui";
 
-export function TeamSwitcher({
-  teams,
-}: {
-  teams: {
-    title: string
-    icon: React.ElementType
-    plan: string
-  }[]
-}) {
+export function TeamSwitcher({teams}: { teams: MenuItem[] }) {
   const { isMobile } = useSidebar()
   const [activeTeam, setActiveTeam] = React.useState(teams[0])
 
