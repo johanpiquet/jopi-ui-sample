@@ -10,6 +10,6 @@ modInit.setModuleInfo({
     moduleTitle: "Module A"
 });
 
-modInit.addInitializer(PriorityLevel.Default, async () => {
+modInit.addServerInitializer(PriorityLevel.Default, async () => {
     console.log('Module A - Server initialized (Default)');
 });

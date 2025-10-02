@@ -1,8 +1,8 @@
 import {getModuleUiInitContext, PriorityLevel} from "jopi-rewrite-ui";
 
 const modInit = getModuleUiInitContext();
-alert("iici!");
-modInit.addInitializer(PriorityLevel.Default, async () => {
+
+modInit.addUiInitializer(PriorityLevel.Default, async () => {
     console.log('Module A - UI initialized (Default)');
 
     const rootMenu = modInit.getMenuManager().getLeftMenu();
