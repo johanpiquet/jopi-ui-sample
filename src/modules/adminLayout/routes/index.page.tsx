@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/shared/components/app-sidebar"
+import { AppSidebar } from "../components/app-sidebar.tsx"
 import {
     Breadcrumb,
     BreadcrumbItem,

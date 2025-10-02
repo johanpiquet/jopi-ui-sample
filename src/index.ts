@@ -5,6 +5,6 @@ jopiApp.startApp(import.meta, jopiEasy => {
         .enable_automaticRoutes()
 
         .use_modules()
-            .add_module("moduleA")
+            .add_module("adminLayout")
             .END_use_modules();
 });
