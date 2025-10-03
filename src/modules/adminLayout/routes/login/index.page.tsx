@@ -4,7 +4,8 @@ import {
     useUserInfos,
     useFormSubmit,
     useNavigateSafe,
-    useSearchParamsSafe
+    useSearchParamsSafe,
+    declareUserStateChange
 } from "jopi-rewrite-ui";
 
 export default function() {
@@ -19,9 +20,16 @@ export default function() {
     const infos = useUserInfos();
     const logOutUser = useLogOutUser();
 
-    const [submitForm, _] = useFormSubmit(() => {
-        const infos = useUserInfos();
-        if (infos) navigate(returnUrl);
+    const [submitForm, _] = useFormSubmit((res) => {
+        if (res.isOk) {
+            // The cooke has been automatically update by the browser
+            // when receiving the POST call returns. It's why we must
+            // declare that a change occured.
+            //
+            declareUserStateChange();
+
+            navigate(returnUrl);
+        }
     });
 
     // Already connected when navigate to this page?
