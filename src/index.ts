@@ -1,4 +1,5 @@
 import {jopiApp} from "jopi-rewrite";
+import myUsers from "./myUsers.json" with { type: "json" };
 
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.new_webSite()
@@ -6,5 +7,18 @@ jopiApp.startApp(import.meta, jopiEasy => {
 
         .use_modules()
             .add_module("adminLayout")
-            .END_use_modules();
-});
+            .END_use_modules()
+
+        // Add a JWT Token mechanism for user authentification
+        // and user info retrieval.
+        //
+        .add_jwtTokenAuth()
+            // WARNING: you must change this key!
+            .step_setPrivateKey("my-private-key")
+            .step_setUserStore()
+                .use_simpleLoginPassword()
+                    .addMany(myUsers)
+                    .DONE_use_simpleLoginPassword()
+                .DONE_setUserStore()
+            .DONE_add_jwtTokenAuth()
+    });
