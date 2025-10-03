@@ -13,6 +13,10 @@ ctx.onPOST(async req => {
 
     let authResult = await req.tryAuthWithJWT(data as LoginPassword);
 
+    if (!authResult.isOk) {
+        console.log("Auth failed");
+    }
+
     return req.jsonResponse({
         isOk: authResult.isOk,
         authResult: authResult

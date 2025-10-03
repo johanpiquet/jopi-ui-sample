@@ -1,19 +1,32 @@
-import React, {useState} from "react";
-import {type UiUserInfos, logOutUser, useUserInfos, useFormSubmit} from "jopi-rewrite-ui";
+import React from "react";
+import {
+    useLogOutUser,
+    useUserInfos,
+    useFormSubmit,
+    useNavigateSafe,
+    useSearchParamsSafe
+} from "jopi-rewrite-ui";
 
 export default function() {
+    const navigate = useNavigateSafe();
+    const [searchParams] = useSearchParamsSafe();
+    const returnUrl = searchParams.get('returnUrl') ? decodeURIComponent(searchParams.get('returnUrl')!) : '/';
+
     const doLogOut = () => {
         logOutUser();
-        setInfos(undefined);
     };
 
-    const [infos, setInfos] = useState<UiUserInfos|undefined>(() => useUserInfos());
+    const infos = useUserInfos();
+    const logOutUser = useLogOutUser();
 
     const [submitForm, _] = useFormSubmit(() => {
         const infos = useUserInfos();
-        setInfos(infos);
+        if (infos) navigate(returnUrl);
     });
 
+    // Already connected when navigate to this page?
+    // => Show the logout page.
+    //
     if (infos) {
         return <div className="w-full flex flex-col items-center justify-center mt-20">
             <div>You are already logged as: {infos.fullName}</div>
@@ -25,6 +38,9 @@ export default function() {
         </div>;
     }
 
+    // Note connected?
+    // => Show the login page.
+    //
     return (
         <div className="w-full flex flex-col items-center justify-center mt-20">
             <form onSubmit={(e) => submitForm(e)}
