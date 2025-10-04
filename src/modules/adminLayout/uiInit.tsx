@@ -1,10 +1,13 @@
 import {ModuleInitContext_UI} from "jopi-rewrite-ui";
 import {AudioWaveform, Bot, Command, Frame, GalleryVerticalEnd, Map, PieChart, SquareTerminal} from "lucide-react";
-import {EventPriority} from "jopi-node-space";
+import NodeSpace, {EventPriority} from "jopi-node-space";
+
+NodeSpace.events.enableEventSpying((name, e) => {
+    console.log(`Event ${name}`, e);
+});
 
 export default function(modInit: ModuleInitContext_UI) {
     modInit.addUiInitializer(EventPriority.Default, async () => {
-        debugger;
         console.log('Module A - UI initialized (Default)');
 
         //region LeftMenu

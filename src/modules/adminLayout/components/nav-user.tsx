@@ -29,11 +29,17 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/components/ui/sidebar"
-import {type UiUserInfos, useLogOutUser} from "jopi-rewrite-ui";
+import {type UiUserInfos, useLogOutUser, useNavigateSafe} from "jopi-rewrite-ui";
 
 export function NavUser({user}: { user: UiUserInfos }) {
   const { isMobile } = useSidebar()
   const logOutUser = useLogOutUser();
+  const navigate = useNavigateSafe();
+
+  const doLogOut = () => {
+    logOutUser();
+    navigate("/login");
+  }
 
   return (
     <SidebarMenu>
@@ -96,7 +102,7 @@ export function NavUser({user}: { user: UiUserInfos }) {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => logOutUser() }>
+            <DropdownMenuItem onClick={doLogOut}>
               <LogOut />
               Log out
             </DropdownMenuItem>

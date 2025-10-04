@@ -24,7 +24,7 @@ export default function() {
         if (res.isOk) {
             // The cooke has been automatically update by the browser
             // when receiving the POST call returns. It's why we must
-            // declare that a change occured.
+            // declare that a change occurred.
             //
             declareUserStateChange();
 
