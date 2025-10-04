@@ -12,32 +12,36 @@ export default function() {
     const navigate = useNavigateSafe();
     const [searchParams] = useSearchParamsSafe();
     const returnUrl = searchParams.get('returnUrl') ? decodeURIComponent(searchParams.get('returnUrl')!) : '/';
+    const [isAuhFailed, setIsAuhFailed] = React.useState(false);
 
     const doLogOut = () => {
         logOutUser();
     };
 
-    const infos = useUserInfos();
+    const isLoggedIn = useUserInfos();
     const logOutUser = useLogOutUser();
 
     const [submitForm, _] = useFormSubmit((res) => {
         if (res.isOk) {
-            // The cooke has been automatically update by the browser
+            setIsAuhFailed(false);
+
+            // The cookie has been automatically update by the browser
             // when receiving the POST call returns. It's why we must
             // declare that a change occurred.
             //
             declareUserStateChange();
-
             navigate(returnUrl);
+        } else {
+            setIsAuhFailed(true);
         }
     });
 
     // Already connected when navigate to this page?
     // => Show the logout page.
     //
-    if (infos) {
+    if (isLoggedIn) {
         return <div className="w-full flex flex-col items-center justify-center mt-20">
-            <div>You are already logged as: {infos.fullName}</div>
+            <div>You are already logged as: {isLoggedIn.fullName}</div>
             <div onClick={doLogOut}
                 className="mt-8 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity
                 flex items-center justify-center cursor-pointer">
@@ -55,21 +59,42 @@ export default function() {
                 className="md:w-96 w-80 flex flex-col items-center justify-center">
                 <h2 className="text-4xl text-gray-900 font-medium">Sign in</h2>
                 <p className="text-sm text-gray-500/90 mt-3">Welcome back! Please sign in to continue</p>
-                <div className="mt-20"></div>
 
-                <div className="flex items-center w-full bg-transparent border border-gray-300/60 h-12 rounded-full overflow-hidden pl-6 gap-2">
+                {isAuhFailed && (
+                    <div className="mt-6 w-full p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <div className="flex items-center gap-2">
+                            <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                            </svg>
+                            <p className="text-sm text-red-700 font-medium">Invalid identifier</p>
+                        </div>
+                        <p className="text-xs text-red-600 mt-1">Check you e-mail and/or password</p>
+                    </div>
+                )}
+
+                <div className={isAuhFailed ? "mt-8" : "mt-20"}></div>
+
+                <div className={`flex items-center w-full bg-transparent border h-12 rounded-full overflow-hidden pl-6 gap-2 ${
+                    isAuhFailed ? 'border-red-300 bg-red-50/30' : 'border-gray-300/60'
+                }`}>
                     <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M0 .55.571 0H15.43l.57.55v9.9l-.571.55H.57L0 10.45zm1.143 1.138V9.9h13.714V1.69l-6.503 4.8h-.697zM13.749 1.1H2.25L8 5.356z" fill="#6B7280"/>
+                        <path fillRule="evenodd" clipRule="evenodd" d="M0 .55.571 0H15.43l.57.55v9.9l-.571.55H.57L0 10.45zm1.143 1.138V9.9h13.714V1.69l-6.503 4.8h-.697zM13.749 1.1H2.25L8 5.356z" fill={isAuhFailed ? "#DC2626" : "#6B7280"}/>
                     </svg>
                     <input name="login" type="email" required defaultValue="johan@mymail.com" placeholder="Email id"
-                           className="bg-transparent text-gray-500/80 placeholder-gray-500/80 outline-none text-sm w-full h-full" />
+                           className={`bg-transparent outline-none text-sm w-full h-full ${
+                               isAuhFailed ? 'text-red-600 placeholder-red-400' : 'text-gray-500/80 placeholder-gray-500/80'
+                           }`} />
                 </div>
 
-                <div className="flex items-center mt-6 w-full bg-transparent border border-gray-300/60 h-12 rounded-full overflow-hidden pl-6 gap-2">
+                <div className={`flex items-center mt-6 w-full bg-transparent border h-12 rounded-full overflow-hidden pl-6 gap-2 ${
+                    isAuhFailed ? 'border-red-300 bg-red-50/30' : 'border-gray-300/60'
+                }`}>
                     <svg width="13" height="17" viewBox="0 0 13 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13 8.5c0-.938-.729-1.7-1.625-1.7h-.812V4.25C10.563 1.907 8.74 0 6.5 0S2.438 1.907 2.438 4.25V6.8h-.813C.729 6.8 0 7.562 0 8.5v6.8c0 .938.729 1.7 1.625 1.7h9.75c.896 0 1.625-.762 1.625-1.7zM4.063 4.25c0-1.406 1.093-2.55 2.437-2.55s2.438 1.144 2.438 2.55V6.8H4.061z" fill="#6B7280"/>
+                        <path d="M13 8.5c0-.938-.729-1.7-1.625-1.7h-.812V4.25C10.563 1.907 8.74 0 6.5 0S2.438 1.907 2.438 4.25V6.8h-.813C.729 6.8 0 7.562 0 8.5v6.8c0 .938.729 1.7 1.625 1.7h9.75c.896 0 1.625-.762 1.625-1.7zM4.063 4.25c0-1.406 1.093-2.55 2.437-2.55s2.438 1.144 2.438 2.55V6.8H4.061z" fill={isAuhFailed ? "#DC2626" : "#6B7280"}/>
                     </svg>
-                    <input name="password" type="password" placeholder="Password" className="bg-transparent text-gray-500/80 placeholder-gray-500/80 outline-none text-sm w-full h-full" required defaultValue="mypassword" />
+                    <input name="password" type="password" placeholder="Password" className={`bg-transparent outline-none text-sm w-full h-full ${
+                        isAuhFailed ? 'text-red-600 placeholder-red-400' : 'text-gray-500/80 placeholder-gray-500/80'
+                    }`} required defaultValue="mypassword" />
                 </div>
 
                 <div className="w-full flex items-center justify-between mt-8 text-gray-500/80">
