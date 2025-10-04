@@ -9,15 +9,16 @@ import {
 } from "jopi-rewrite-ui";
 
 import NodeSpace from "jopi-node-space";
+import logo from "./logo.png";
 
 const nTR = NodeSpace.translate;
 
-const trInvalidIdentifier = nTR.translate("ui.page.login.invalidIdentifierOrPassword", {default: "Invalid identifier2"});
-const trCheckMailOrPassword = nTR.translate("ui.page.login.checkMailOrPassword", {default: "Check you e-mail and/or password"});
-const trRememberMe = nTR.translate("ui.page.login.rememberMe", {default: "Remember me"});
-const trForgotPassword = nTR.translate("ui.page.login.forgotPassword", {default: "Forgot password?"});
-const trWelcomeBack = nTR.translate("ui.page.login.welcomeBack", {default: "Welcome back! Please sign in to continue"});
-const trSignIn = nTR.translate("ui.page.login.signIn", {default: "Sign in"});
+const trInvalidIdentifier = nTR.translate("page.login.invalidIdentifierOrPassword", {default: "Invalid identifier2"});
+const trCheckMailOrPassword = nTR.translate("page.login.checkMailOrPassword", {default: "Check you e-mail and/or password"});
+const trRememberMe = nTR.translate("page.login.rememberMe", {default: "Remember me"});
+const trForgotPassword = nTR.translate("page.login.forgotPassword", {default: "Forgot password?"});
+const trWelcomeBack = nTR.translate("page.login.welcomeBack", {default: "Welcome back! Please sign in to continue"});
+const trSignIn = nTR.translate("page.login.signIn", {default: "Sign in"});
 
 export default function() {
     const navigate = useNavigateSafe();
@@ -65,9 +66,20 @@ export default function() {
     // => Show the login page.
     //
     return (
-        <div className="w-full flex flex-col items-center justify-center mt-20">
-            <form onSubmit={(e) => submitForm(e)}
-                className="md:w-96 w-80 flex flex-col items-center justify-center">
+        <div className="w-full min-h-screen flex">
+            {/* Colonne gauche - Logo */}
+            <div className="flex-1 flex items-center justify-center bg-gray-50">
+                <img 
+                    src={logo} 
+                    alt="Logo" 
+                    className="w-[200px]"
+                />
+            </div>
+
+            {/* Colonne droite - Formulaire */}
+            <div className="flex-1 flex flex-col items-center justify-center">
+                <form onSubmit={(e) => submitForm(e)}
+                    className="md:w-96 w-80 flex flex-col items-center justify-center">
                 <h2 className="text-4xl text-gray-900 font-medium">{trSignIn}</h2>
                 <p className="text-sm text-gray-500/90 mt-3">{trWelcomeBack}</p>
 
@@ -122,6 +134,7 @@ export default function() {
                 </button>
                 <p className="text-gray-500/90 text-sm mt-4">Don’t have an account? <a className="text-indigo-400 hover:underline" href="#">Sign up</a></p>
             </form>
+            </div>
         </div>
     );
 };
