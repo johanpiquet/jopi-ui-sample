@@ -1,7 +1,7 @@
 // The role of this file is to initialize the module once mounted.
 
-import {PriorityLevel} from "jopi-rewrite-ui";
 import {ModuleInitContext_Server} from "jopi-rewrite";
+import {EventPriority} from "jopi-node-space";
 
 export default function(modInit: ModuleInitContext_Server) {
     modInit.setModuleInfo({
@@ -9,7 +9,7 @@ export default function(modInit: ModuleInitContext_Server) {
         moduleTitle: "Module A"
     });
 
-    modInit.addServerInitializer(PriorityLevel.Default, async () => {
+    modInit.addServerInitializer(EventPriority.Default, async () => {
         console.log('Module A - Server initialized (Default)');
     });
 }
