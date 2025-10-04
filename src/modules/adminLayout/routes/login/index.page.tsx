@@ -8,6 +8,17 @@ import {
     declareUserStateChange
 } from "jopi-rewrite-ui";
 
+import NodeSpace from "jopi-node-space";
+
+const nTR = NodeSpace.translate;
+
+const trInvalidIdentifier = nTR.translate("ui.page.login.invalidIdentifierOrPassword", {default: "Invalid identifier2"});
+const trCheckMailOrPassword = nTR.translate("ui.page.login.checkMailOrPassword", {default: "Check you e-mail and/or password"});
+const trRememberMe = nTR.translate("ui.page.login.rememberMe", {default: "Remember me"});
+const trForgotPassword = nTR.translate("ui.page.login.forgotPassword", {default: "Forgot password?"});
+const trWelcomeBack = nTR.translate("ui.page.login.welcomeBack", {default: "Welcome back! Please sign in to continue"});
+const trSignIn = nTR.translate("ui.page.login.signIn", {default: "Sign in"});
+
 export default function() {
     const navigate = useNavigateSafe();
     const [searchParams] = useSearchParamsSafe();
@@ -57,18 +68,18 @@ export default function() {
         <div className="w-full flex flex-col items-center justify-center mt-20">
             <form onSubmit={(e) => submitForm(e)}
                 className="md:w-96 w-80 flex flex-col items-center justify-center">
-                <h2 className="text-4xl text-gray-900 font-medium">Sign in</h2>
-                <p className="text-sm text-gray-500/90 mt-3">Welcome back! Please sign in to continue</p>
+                <h2 className="text-4xl text-gray-900 font-medium">{trSignIn}</h2>
+                <p className="text-sm text-gray-500/90 mt-3">{trWelcomeBack}</p>
 
                 {isAuhFailed && (
-                    <div className="mt-6 w-full p-3 bg-red-50 border border-red-200 rounded-lg">
-                        <div className="flex items-center gap-2">
+                    <div className="mt-6 w-full p-3 bg-red-50 border border-red-200 rounded-lg text-center">
+                        <div className="flex items-center justify-center gap-2">
                             <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                             </svg>
-                            <p className="text-sm text-red-700 font-medium">Invalid identifier</p>
+                            <p className="text-sm text-red-700 font-medium">{trInvalidIdentifier}</p>
                         </div>
-                        <p className="text-xs text-red-600 mt-1">Check you e-mail and/or password</p>
+                        <p className="text-xs text-red-600 mt-1">{trCheckMailOrPassword}</p>
                     </div>
                 )}
 
@@ -100,9 +111,9 @@ export default function() {
                 <div className="w-full flex items-center justify-between mt-8 text-gray-500/80">
                     <div className="flex items-center gap-2">
                         <input name="remember" className="h-5" type="checkbox" id="checkbox" />
-                        <label className="text-sm" htmlFor="checkbox">Remember me</label>
+                        <label className="text-sm" htmlFor="checkbox">{trRememberMe}</label>
                     </div>
-                    <a className="text-sm underline" href="#">Forgot password?</a>
+                    <a className="text-sm underline" href="#">{trForgotPassword}</a>
                 </div>
 
                 <button type="submit"
