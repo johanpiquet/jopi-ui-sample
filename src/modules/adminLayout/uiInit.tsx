@@ -25,8 +25,14 @@ export default function(modInit: ModuleInitContext_UI) {
             ifUserHasRoles(["admin"], () => {
                 leftMenu.append({
                     key: "FOR ADMIN",
-                    url: "#",
-                    icon: SquareTerminal
+
+                    icon: SquareTerminal,
+                    items: [
+                        {
+                            key: "Admin page A",
+                            url: "/admin/pageA",
+                        }
+                    ]
                 });
             });
 
