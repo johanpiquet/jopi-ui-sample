@@ -1,25 +1,40 @@
-import {ModuleInitContext_UI} from "jopi-rewrite-ui";
+import {ifUserHasRoles, isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite-ui";
 import {AudioWaveform, Bot, Command, Frame, GalleryVerticalEnd, Map, PieChart, SquareTerminal} from "lucide-react";
 import NodeSpace, {EventPriority} from "jopi-node-space";
 
-NodeSpace.events.enableEventSpying((name, e) => {
-    console.log(`Event ${name}`, e);
-});
+const nEvents = NodeSpace.events;
+
+if (isBrowserSide()) {
+    NodeSpace.events.enableEventSpying((name, e) => {
+        console.log(`Event ${name}`, e);
+    });
+}
 
 export default function(modInit: ModuleInitContext_UI) {
     modInit.addUiInitializer(EventPriority.Default, async () => {
         console.log('Module A - UI initialized (Default)');
 
+        const menuManager = modInit.getMenuManager();
+
         //region LeftMenu
 
-        const leftMenu = modInit.getMenuManager().getLeftMenu();
+        menuManager.addMenuBuilder(MenuName.LEFT_MENU, (leftMenu) => {
+            // The menu builders are called each time user roles are updated.
+            // Which includes login/logout.
+            //
+            ifUserHasRoles(["admin"], () => {
+                leftMenu.append({
+                    key: "FOR ADMIN",
+                    url: "#",
+                    icon: SquareTerminal
+                });
+            });
 
-        leftMenu.append({
+            leftMenu.append({
                 key: "playground",
                 title: "Playground",
                 url: "#",
                 icon: SquareTerminal,
-                isActive: true,
                 items: [
                     {
                         key: "history",
@@ -36,45 +51,53 @@ export default function(modInit: ModuleInitContext_UI) {
                 ],
             });
 
-        leftMenu.append({
-            key: "Models",
-            url: "#",
-            icon: Bot,
-            items: [
-                {
-                    key: "Genesis",
-                    url: "#",
-                },
-                {
-                    key: "Explorer",
-                    url: "#",
-                },
-                {
-                    key: "Quantum",
-                    url: "#",
-                },
-            ],
-        })
+            leftMenu.append({
+                key: "Models",
+                url: "#",
+                icon: Bot,
+                items: [
+                    {
+                        key: "Genesis",
+                        url: "#",
+                    },
+                    {
+                        key: "Explorer",
+                        url: "#",
+                    },
+                    {
+                        key: "Quantum",
+                        url: "#",
+                    },
+                ],
+            })
+        });
 
         //endregion
 
         //region Menu project
 
-        const projectsMenu = modInit.getMenuManager().getMenu("projects");
-
-        projectsMenu.append({key: "Design Engineering", url: "#", icon: Frame});
-        projectsMenu.append({key: "Sales & Marketing", url: "#", icon: PieChart});
-        projectsMenu.append({key: "Travel", url: "#", icon: Map});
+        menuManager.addMenuBuilder("projects", (projectsMenu) => {
+            projectsMenu.append({key: "Design Engineering", url: "#", icon: Frame});
+            projectsMenu.append({key: "Sales & Marketing", url: "#", icon: PieChart});
+            projectsMenu.append({key: "Travel", url: "#", icon: Map});
+        });
 
         //endregion
 
         //region Menu team
 
-        const teamsMenu = modInit.getMenuManager().getMenu("teams");
-        teamsMenu.append({key: "Acme 1", url: "#", icon: GalleryVerticalEnd, plan: "Plan 1"});
-        teamsMenu.append({key: "Acme 2", url: "#", icon: AudioWaveform, plan: "Plan 2"});
-        teamsMenu.append({key: "Acme 3", url: "#", icon: Command, plan: "Plan 3"});
+        menuManager.addMenuBuilder("teams", (teamsMenu) => {
+            teamsMenu.append({key: "Acme 1", url: "#", icon: GalleryVerticalEnd, plan: "Plan 1"});
+            teamsMenu.append({key: "Acme 2", url: "#", icon: AudioWaveform, plan: "Plan 2"});
+            teamsMenu.append({key: "Acme 3", url: "#", icon: Command, plan: "Plan 3"});
+        });
 
         //endregion
+    });
+
+    nEvents.addListener("user.rolesUpdated", async () => {
+        ifUserHasRoles(["admin", "writer"], () => {
+           // alert("has the roles [\"admin\", \"writer\"]")
+        })
     });
 }
