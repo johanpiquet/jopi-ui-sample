@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import {getLeftMenu, getMenu, type MenuItem} from "jopi-rewrite-ui";
+import {getMenu, type MenuItem, MenuName} from "jopi-rewrite-ui";
 import NodeSpace from "jopi-node-space";
 
 interface MenuStore {
@@ -10,7 +10,7 @@ interface MenuStore {
 
 function createStoreState() {
     return {
-        leftMenu: getLeftMenu(),
+        leftMenu: getMenu(MenuName.LEFT_MENU),
         teamsMenu: getMenu("teams"),
         projectsMenu: getMenu("projects"),
     };
