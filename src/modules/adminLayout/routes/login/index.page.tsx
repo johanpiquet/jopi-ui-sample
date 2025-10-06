@@ -26,22 +26,18 @@ export default function() {
     const returnUrl = searchParams.get('returnUrl') ? decodeURIComponent(searchParams.get('returnUrl')!) : '/';
     const [isAuhFailed, setIsAuhFailed] = React.useState(false);
 
-    const doLogOut = () => {
-        logOutUser();
-    };
-
     const isLoggedIn = useUserInfos();
     const logOutUser = useLogOutUser();
     const declareUserStateChange = useUseStateRefresh();
 
     const [submitForm, _] = useFormSubmit((res) => {
         if (res.isOk) {
+            // We don't need to decode the result
+            // since the only interesting thing here
+            // is the cookie that is automatically set.
+            //
             setIsAuhFailed(false);
 
-            // The cookie has been automatically update by the browser
-            // when receiving the POST call returns. It's why we must
-            // declare that a change occurred.
-            //
             declareUserStateChange();
             navigate(returnUrl);
         } else {
@@ -55,7 +51,7 @@ export default function() {
     if (isLoggedIn) {
         return <div className="w-full flex flex-col items-center justify-center mt-20">
             <div>You are already logged as: {isLoggedIn.fullName}</div>
-            <div onClick={doLogOut}
+            <div onClick={logOutUser}
                  className="mt-8 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity
                 flex items-center justify-center cursor-pointer">
                 Logout

@@ -101,7 +101,7 @@ export default function(modInit: ModuleInitContext_UI) {
         //endregion
     });
 
-    nEvents.addListener("user.rolesUpdated", () => {
+    nEvents.addListener("user.infosUpdated", () => {
         modInit.ifUserHasRoles(["admin", "writer"], () => {
            // alert("has the roles [\"admin\", \"writer\"]")
         })

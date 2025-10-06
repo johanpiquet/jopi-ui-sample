@@ -4,16 +4,11 @@ let ctx = getRouteServerContext();
 
 ctx.onPOST(async req => {
     const data = await req.getReqData(true);
-    console.log("Post data:", data);
+    const authResult = await req.tryAuthWithJWT(data as LoginPassword);
 
-    let authResult = await req.tryAuthWithJWT(data as LoginPassword);
+    if (!authResult.isOk) console.log("Auth failed");
 
-    if (!authResult.isOk) {
-        console.log("Auth failed");
-    }
-
-    return req.jsonResponse({
-        isOk: authResult.isOk,
-        authResult: authResult
-    });
+    // Will automatically set a cookie.
+    // It why we don't core of the details here.
+    return req.jsonResponse({isOk: authResult && authResult.isOk});
 });
