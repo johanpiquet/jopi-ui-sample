@@ -5,15 +5,15 @@ import { NavProjects } from "./nav-projects.tsx"
 import { NavUser } from "./nav-user.tsx"
 import { TeamSwitcher } from "./team-switcher.tsx"
 import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail,} from "@/shared/components/ui/sidebar"
-import {useUserInfos} from "jopi-rewrite-ui";
-import {useMenu} from "@/shared/stores/menuStore";
+import {MenuName, useMenu, useUserInfos} from "jopi-rewrite-ui";
 import {LogIn} from "lucide-react";
 import { useNavigate } from "react-router"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const teamsMenu = useMenu(s => s.teamsMenu);
-    const projectsMenu = useMenu(s => s.projectsMenu);
-    const leftMenu = useMenu(s => s.leftMenu);
+    const teamsMenu = useMenu("teams");
+    const projectsMenu = useMenu("projects");
+    const leftMenu = useMenu(MenuName.LEFT_MENU);
+
     const user = useUserInfos();
     const navigate = useNavigate();
 

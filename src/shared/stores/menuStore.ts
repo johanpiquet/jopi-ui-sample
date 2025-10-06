@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+/*import { create } from 'zustand';
 import {getMenu, type MenuItem, MenuName} from "jopi-rewrite-ui";
 import NodeSpace from "jopi-node-space";
 
@@ -16,11 +16,10 @@ function createStoreState() {
     };
 }
 
-export const useMenu = create<MenuStore>(() => createStoreState());
+export const useMenu2 = create<MenuStore>(() => createStoreState());
 
 // Allow updating the store if a menu changes.
 // This will refresh the screens.
-NodeSpace.events.addListener("app.menu.invalided", async () => {
-    debugger;
-    useMenu.setState(createStoreState());
-});
+NodeSpace.events.addListener("app.menu.invalided", () => {
+    useMenu2.setState(createStoreState());
+});*/

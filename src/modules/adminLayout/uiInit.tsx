@@ -11,7 +11,7 @@ if (isBrowserSide()) {
 }
 
 export default function(modInit: ModuleInitContext_UI) {
-    modInit.addUiInitializer(EventPriority.Default, async () => {
+    modInit.addUiInitializer(EventPriority.Default, () => {
         console.log('Module A - UI initialized (Default)');
 
         const menuManager = modInit.getMenuManager();
@@ -101,7 +101,7 @@ export default function(modInit: ModuleInitContext_UI) {
         //endregion
     });
 
-    nEvents.addListener("user.rolesUpdated", async () => {
+    nEvents.addListener("user.rolesUpdated", () => {
         ifUserHasRoles(["admin", "writer"], () => {
            // alert("has the roles [\"admin\", \"writer\"]")
         })
