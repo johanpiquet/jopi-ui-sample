@@ -44,7 +44,7 @@ export default function(modInit: ModuleInitContext_UI) {
                 items: [
                     {
                         key: "history",
-                        url: "#",
+                        url: "/history",
                     },
                     {
                         key: "starred",
