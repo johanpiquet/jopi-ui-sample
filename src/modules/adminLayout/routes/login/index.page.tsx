@@ -5,7 +5,7 @@ import {
     useFormSubmit,
     useNavigateSafe,
     useSearchParamsSafe,
-    declareUserStateChange, Composite
+    Composite, useUseStateRefresh
 } from "jopi-rewrite-ui";
 
 import NodeSpace from "jopi-node-space";
@@ -32,6 +32,7 @@ export default function() {
 
     const isLoggedIn = useUserInfos();
     const logOutUser = useLogOutUser();
+    const declareUserStateChange = useUseStateRefresh();
 
     const [submitForm, _] = useFormSubmit((res) => {
         if (res.isOk) {

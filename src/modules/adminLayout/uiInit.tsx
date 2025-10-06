@@ -1,4 +1,4 @@
-import {ifUserHasRoles, isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite-ui";
+import {isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite-ui";
 import {AudioWaveform, Bot, Command, Frame, GalleryVerticalEnd, Map, PieChart, SquareTerminal} from "lucide-react";
 import NodeSpace, {EventPriority} from "jopi-node-space";
 
@@ -22,7 +22,7 @@ export default function(modInit: ModuleInitContext_UI) {
             // The menu builders are called each time user roles are updated.
             // Which includes login/logout.
             //
-            ifUserHasRoles(["admin"], () => {
+            modInit.ifUserHasRoles(["admin"], () => {
                 leftMenu.append({
                     key: "FOR ADMIN",
 
@@ -102,7 +102,7 @@ export default function(modInit: ModuleInitContext_UI) {
     });
 
     nEvents.addListener("user.rolesUpdated", () => {
-        ifUserHasRoles(["admin", "writer"], () => {
+        modInit.ifUserHasRoles(["admin", "writer"], () => {
            // alert("has the roles [\"admin\", \"writer\"]")
         })
     });
