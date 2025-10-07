@@ -2,6 +2,8 @@ import {isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite-ui";
 import {AudioWaveform, Bot, Command, Frame, GalleryVerticalEnd, Map, PieChart, SquareTerminal} from "lucide-react";
 import NodeSpace, {EventPriority} from "jopi-node-space";
 
+import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
+
 const nEvents = NodeSpace.events;
 
 if (isBrowserSide()) {
@@ -11,6 +13,8 @@ if (isBrowserSide()) {
 }
 
 export default function(modInit: ModuleInitContext_UI) {
+    modInit.setComponentAlias({alias: "page.layout.admin", component: DefaultPageLayout});
+
     modInit.addUiInitializer(EventPriority.Default, () => {
         console.log('Module A - UI initialized (Default)');
 

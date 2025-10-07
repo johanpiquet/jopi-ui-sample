@@ -1,7 +1,7 @@
-import PageLayout from "../components/PageLayout.tsx";
+import {AdminPageLayout} from "jopi-rewrite-ui";
 
 export default function() {
-    return <PageLayout>
+    return <AdminPageLayout>
         <div>History</div>
-    </PageLayout>
+    </AdminPageLayout>
 }
