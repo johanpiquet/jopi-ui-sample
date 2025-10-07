@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 import { Link } from "react-router";
 
 import {
@@ -19,8 +19,9 @@ import {
   SidebarMenuSubItem,
 } from "@/shared/components/ui/sidebar"
 import {type MenuItem} from "jopi-rewrite-ui";
+import React from "react";
 
-export function NavMain({items}: { items: MenuItem[] }) {
+export function NavMain({items, onClick}: { items: MenuItem[], onClick?: (subItem: MenuItem, event: React.MouseEvent<HTMLAnchorElement>)=>void}) {
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
@@ -45,7 +46,8 @@ export function NavMain({items}: { items: MenuItem[] }) {
                   {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild isActive={subItem.isActive}>
-                        <Link to={subItem.url||"#"}>{subItem.title}</Link>
+                        <Link to={subItem.url||"#"}
+                              onClick={(event) => onClick?.(subItem, event)}>{subItem.title}</Link>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   ))}

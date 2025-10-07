@@ -40,8 +40,19 @@ export default function(modInit: ModuleInitContext_UI) {
             });
 
             leftMenu.append({
+                key: "Tools",
+                url: "/tools",
+                icon: SquareTerminal,
+                items: [
+                    {
+                        key: "tools",
+                        url: "/tools"
+                    }
+                ]
+            });
+
+            leftMenu.append({
                 key: "playground",
-                title: "Playground",
                 url: "#",
                 icon: SquareTerminal,
                 items: [
