@@ -27,17 +27,16 @@ export default function(modInit: ModuleInitContext_UI) {
             // Which includes login/logout.
             //
             modInit.ifUserHasRoles(["admin"], () => {
-                leftMenu.append({
-                    key: "FOR ADMIN",
+                leftMenu.selectItem(["My roles", "Role Admin"]).value = { url: "/role/admin" };
+            });
 
-                    icon: SquareTerminal,
-                    items: [
-                        {
-                            key: "Admin page A",
-                            url: "/admin/pageA",
-                        }
-                    ]
-                });
+            modInit.ifUserHasRoles(["writer"], () => {
+                leftMenu.selectItem(["My roles", "Role Writer"]).value = { url: "/role/writer" };
+            });
+
+            leftMenu.append({
+                key: "My roles",
+                icon: SquareTerminal
             });
 
             leftMenu.append({
