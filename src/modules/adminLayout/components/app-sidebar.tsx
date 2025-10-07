@@ -13,6 +13,8 @@ import {nEvents} from "jopi-node-space";
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const teamsMenu = useMenu("teams");
     const projectsMenu = useMenu("projects");
+    const leftMenu = useMenu(MenuName.LEFT_MENU);
+    console.log("useMenu leftMenu", leftMenu);
 
     const user = useUserInfos();
     const navigate = useNavigate();
@@ -32,7 +34,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <TeamSwitcher teams={teamsMenu}/>
             </SidebarHeader>
             <SidebarContent>
-                <NavMain items={useMenu(MenuName.LEFT_MENU)} onClick={(item) => handleLinkClick(item, MenuName.LEFT_MENU)}/>
+                <NavMain items={leftMenu} onClick={(item) => handleLinkClick(item, MenuName.LEFT_MENU)}/>
                 <NavProjects projects={projectsMenu}/>
             </SidebarContent>
             <SidebarFooter>

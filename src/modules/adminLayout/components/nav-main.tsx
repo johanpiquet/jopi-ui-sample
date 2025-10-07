@@ -24,13 +24,13 @@ import React from "react";
 export function NavMain({items, onClick}: { items: MenuItem[], onClick?: (subItem: MenuItem, event: React.MouseEvent<HTMLAnchorElement>)=>void}) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>Category</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
             key={item.title}
             asChild
-            defaultOpen={item.isActive}
+            open={item.isActive ? true : undefined}
             className="group/collapsible"
           >
             <SidebarMenuItem>
