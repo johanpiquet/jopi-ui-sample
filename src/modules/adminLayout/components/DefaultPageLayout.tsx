@@ -7,6 +7,7 @@ import {useMatchingMenuItem, useRouteChangeListener} from "jopi-rewrite-ui";
 
 function MyBreadcrumb() {
     const menuItem = useMatchingMenuItem();
+
     if (!menuItem) return;
     const baseKey = menuItem.reactKey!;
 
@@ -38,9 +39,7 @@ function MyBreadcrumb() {
     return null;
 }
 
-export default function({children}: { children: React.ReactNode}) {
-    useRouteChangeListener();
-
+function Layout({children}: { children: React.ReactNode}) {
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -59,4 +58,9 @@ export default function({children}: { children: React.ReactNode}) {
             </SidebarInset>
         </SidebarProvider>
     )
+}
+
+export default function({children}: { children: React.ReactNode}) {
+    useRouteChangeListener();
+    return <Layout>{children}</Layout>;
 }

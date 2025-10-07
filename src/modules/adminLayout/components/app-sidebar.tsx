@@ -14,7 +14,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const teamsMenu = useMenu("teams");
     const projectsMenu = useMenu("projects");
     const leftMenu = useMenu(MenuName.LEFT_MENU);
-    console.log("useMenu leftMenu", leftMenu);
 
     const user = useUserInfos();
     const navigate = useNavigate();
