@@ -1,19 +1,42 @@
 import { AppSidebar } from "../components/app-sidebar.tsx"
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/shared/components/ui/breadcrumb"
+import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator} from "@/shared/components/ui/breadcrumb"
 import { Separator } from "@/shared/components/ui/separator"
-import {
-    SidebarInset,
-    SidebarProvider,
-    SidebarTrigger,
-} from "@/shared/components/ui/sidebar"
-import React from "react";
+import {SidebarInset, SidebarProvider, SidebarTrigger} from "@/shared/components/ui/sidebar"
+import React, {type JSX} from "react";
+import {useMatchingMenuItem} from "jopi-rewrite-ui";
+
+function MyBreadcrumb() {
+    const menuItem = useMatchingMenuItem();
+    if (!menuItem) return;
+    const baseKey = menuItem.reactKey!;
+
+    const B = menuItem.breadcrumb;
+
+    if (typeof(B) === "function") {
+            return <B />
+    } else if (B instanceof Array) {
+        const list = [...B];
+        let lastTitle = list.pop();
+
+        const titles: JSX.Element[] = [];
+
+        list.forEach((title) => {
+            titles.push(<BreadcrumbItem key={baseKey + titles.length} className="hidden md:block">
+                <BreadcrumbLink>{title}</BreadcrumbLink>
+            </BreadcrumbItem>);
+
+            titles.push(<BreadcrumbSeparator key={baseKey + titles.length} className="hidden md:block" />)
+        });
+
+        titles.push(<BreadcrumbItem key={baseKey + titles.length}><BreadcrumbPage>{lastTitle}</BreadcrumbPage></BreadcrumbItem>)
+
+        return <Breadcrumb>
+            <BreadcrumbList>{titles}</BreadcrumbList>
+        </Breadcrumb>
+    }
+
+    return null;
+}
 
 export default function({children}: { children: React.ReactNode}) {
     return (
@@ -27,19 +50,7 @@ export default function({children}: { children: React.ReactNode}) {
                             orientation="vertical"
                             className="mr-2 data-[orientation=vertical]:h-4"
                         />
-                        <Breadcrumb>
-                            <BreadcrumbList>
-                                <BreadcrumbItem className="hidden md:block">
-                                    <BreadcrumbLink href="#">
-                                        Building Your Application
-                                    </BreadcrumbLink>
-                                </BreadcrumbItem>
-                                <BreadcrumbSeparator className="hidden md:block" />
-                                <BreadcrumbItem>
-                                    <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                                </BreadcrumbItem>
-                            </BreadcrumbList>
-                        </Breadcrumb>
+                        <MyBreadcrumb />
                     </div>
                 </header>
                 <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
