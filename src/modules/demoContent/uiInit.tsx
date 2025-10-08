@@ -11,7 +11,8 @@ export default function(modInit: ModuleInitContext_UI) {
                 key: "Features",
                 icon: SquareTerminal,
                 items: [
-                    {key: "Forms", url: "/features/forms"}
+                    {key: "Forms", url: "/features/forms"},
+                    {key: "Tests", url: "/features/tests"}
                 ]
             });
         });
