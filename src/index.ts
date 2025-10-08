@@ -7,6 +7,7 @@ jopiApp.startApp(import.meta, jopiEasy => {
 
         .use_modules()
             .add_module("adminLayout")
+            .add_module("demoContent")
             .END_use_modules()
 
         // Add a JWT Token mechanism for user authentification
