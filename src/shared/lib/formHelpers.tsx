@@ -1,63 +1,14 @@
-import {AdminPageLayout} from "jopi-rewrite-ui";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, type UseFormReturn} from "react-hook-form";
+import { type UseFormReturn} from "react-hook-form";
 import { Checkbox } from "@/shared/components/ui/checkbox";
-import { Button } from "@/shared/components/ui/button";
 import { Label } from "@/shared/components/ui/label";
-
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/shared/components/ui/form";
+import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/shared/components/ui/form";
 
 import { Input } from "@/shared/components/ui/input";
 import React from "react";
 
-const formSchema = z.object({
-    username: z.string().min(2, { message: "Username must be at least 2 characters." }),
-    password: z.string().min(8, { message: "Password must be at least 8 characters." }),
-    allowNewsletter: z.boolean().refine((value) => value === true, { message: "You must accept the terms of use." }),
-});
-
-function PageContent() {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            username: "myusername",
-            password: "mysuperPassw@rd",
-            allowNewsletter: true
-        }
-    });
-
-    // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values)
-    }
-
-    return <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <InputFormField name="username" form={form}
-                            label="User name" />
-
-            <InputFormField name="password" form={form}
-                            label="Password" description="Thank to use a strong password" placeholder="MyP@ssword" />
-
-            <CheckboxFormField form={form} name="allowNewsletter" label="Register to newsletter" description="By checking this box, you agree to our privacy policy and terms of use." />
-
-            <Button type="submit">Submit</Button>
-        </form>
-    </Form>
-}
-
 type UiText = string | React.ReactNode;
 
-function InputFormField(p: {
+export function InputFormField(p: {
     name: string,
     form: UseFormReturn<any>,
 
@@ -78,7 +29,7 @@ function InputFormField(p: {
     )} />
 }
 
-function CheckboxFormField(p: {
+export function CheckboxFormField(p: {
     name: string,
     form: UseFormReturn<any>,
     label: UiText,
@@ -110,10 +61,4 @@ function CheckboxFormField(p: {
             </FormControl>
         </FormItem>
     )} />
-}
-
-export default function() {
-    return <AdminPageLayout>
-        <PageContent />
-    </AdminPageLayout>
 }
