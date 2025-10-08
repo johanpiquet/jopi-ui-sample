@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { NavMain } from "./nav-main.tsx"
-import { NavProjects } from "./nav-projects.tsx"
+import { NavFavorites } from "./nav-favorites.tsx"
 import { NavUser } from "./nav-user.tsx"
 import { TeamSwitcher } from "./team-switcher.tsx"
 import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail,} from "@/shared/components/ui/sidebar"
@@ -12,7 +12,7 @@ import {nEvents} from "jopi-node-space";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const teamsMenu = useMenu("teams");
-    const projectsMenu = useMenu("projects");
+    const favoriteMenu = useMenu("favorites");
     const leftMenu = useMenu(MenuName.LEFT_MENU);
 
     const user = useUserInfos();
@@ -34,7 +34,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarHeader>
             <SidebarContent>
                 <NavMain items={leftMenu} onClick={(item) => handleLinkClick(item, MenuName.LEFT_MENU)}/>
-                <NavProjects projects={projectsMenu}/>
+                <NavFavorites favorites={favoriteMenu}/>
             </SidebarContent>
             <SidebarFooter>
                 {user ?

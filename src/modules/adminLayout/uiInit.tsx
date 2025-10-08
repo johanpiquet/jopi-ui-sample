@@ -28,10 +28,8 @@ export default function(modInit: ModuleInitContext_UI) {
         });
     });
 
-    menuManager.addMenuBuilder("projects", (projectsMenu) => {
-        projectsMenu.append({key: "Design Engineering", url: "#", icon: Frame});
-        projectsMenu.append({key: "Sales & Marketing", url: "#", icon: PieChart});
-        projectsMenu.append({key: "Travel", url: "#", icon: Map});
+    menuManager.addMenuBuilder("favorites", (projectsMenu) => {
+        projectsMenu.append({key: "Home", url: "/", icon: Frame});
     });
 
     menuManager.addMenuBuilder("teams", (teamsMenu) => {

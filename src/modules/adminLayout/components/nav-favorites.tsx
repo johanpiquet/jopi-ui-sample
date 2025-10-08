@@ -26,14 +26,14 @@ import {
 import {type MenuItem} from "jopi-rewrite-ui";
 import {Link} from "react-router";
 
-export function NavProjects({projects}: { projects: MenuItem[] }) {
+export function NavFavorites({favorites}: { favorites: MenuItem[] }) {
   const { isMobile } = useSidebar()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
+      <SidebarGroupLabel>Favorites</SidebarGroupLabel>
       <SidebarMenu>
-        {projects.map((item) => (
+        {favorites.map((item) => (
           <SidebarMenuItem key={item.title}>
             <SidebarMenuButton asChild>
               <Link to={item.url!}>
