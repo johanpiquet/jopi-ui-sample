@@ -3,7 +3,7 @@ import {type LoginPassword, getRouteServerContext} from "jopi-rewrite";
 let ctx = getRouteServerContext();
 
 ctx.onPOST(async req => {
-    const data = await req.getReqData(true);
+    const data = await req.getReqData({ignoreUrl: true});
     const authResult = await req.tryAuthWithJWT(data as LoginPassword);
 
     if (!authResult.isOk) console.log("Auth failed");
