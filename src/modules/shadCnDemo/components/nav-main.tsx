@@ -29,7 +29,7 @@ export function NavMain({items, onClick}: { items: MenuItem[], onClick?: (subIte
         {items.map((item) => (
           <Collapsible
             key={item.title} asChild
-            shouldBeOpen={item.isActive === true}
+            defaultOpen={item.isActive === true}
             className="group/collapsible"
           >
             <SidebarMenuItem>

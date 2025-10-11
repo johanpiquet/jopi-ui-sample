@@ -1,15 +1,16 @@
 "use client"
 
+/**
+ * ---- Hacked, don't erase! ----
+ * johan.p: correction for defaultOpen to work correctly.
+ */
+
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
 import React from "react";
 
-interface CollapsibleProps extends React.ComponentProps<typeof CollapsiblePrimitive.Root> {
-  shouldBeOpen?: boolean;
-}
-
-function Collapsible({shouldBeOpen, ...props}: CollapsibleProps) {
-  const [isOpen, setIsOpen] = React.useState(shouldBeOpen);
-  React.useEffect(() => { setIsOpen(shouldBeOpen)}, [shouldBeOpen]);
+function Collapsible({defaultOpen, ...props}: React.ComponentProps<typeof CollapsiblePrimitive.Root> ) {
+  const [isOpen, setIsOpen] = React.useState(props.open || defaultOpen);
+  React.useEffect(() => { setIsOpen(props.open || defaultOpen)}, [props.open, defaultOpen]);
 
   return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} open={isOpen} onOpenChange={setIsOpen} />
 }
