@@ -3,10 +3,15 @@
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
 import React from "react";
 
-function Collapsible({
-  ...props
-}: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {
-  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />
+interface CollapsibleProps extends React.ComponentProps<typeof CollapsiblePrimitive.Root> {
+  shouldBeOpen?: boolean;
+}
+
+function Collapsible({shouldBeOpen, ...props}: CollapsibleProps) {
+  const [isOpen, setIsOpen] = React.useState(shouldBeOpen);
+  React.useEffect(() => { setIsOpen(shouldBeOpen)}, [shouldBeOpen]);
+
+  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} open={isOpen} onOpenChange={setIsOpen} />
 }
 
 function CollapsibleTrigger({

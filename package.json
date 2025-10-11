@@ -37,7 +37,6 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "class-variance-authority": "^0.7.1",
     "lucide-react": "^0.544.0",
-    "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.7",
     "react-hook-form": "^7.64.0",
