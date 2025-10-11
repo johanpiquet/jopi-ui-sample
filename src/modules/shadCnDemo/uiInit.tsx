@@ -1,5 +1,6 @@
 import {isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite-ui";
 import {nEvents} from "jopi-node-space";
+import * as Person from "./schemas/person.ts";
 
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
 import {AudioWaveform, Command, Frame, GalleryVerticalEnd, Map, PieChart, SquareTerminal} from "lucide-react";
@@ -10,7 +11,17 @@ if (isBrowserSide()) {
     });
 }
 
+function testSchema() {
+    let p: Person.Type = {
+        name: "John"
+    };
+
+    console.log("testSchema:", p);
+}
+
 export default function(modInit: ModuleInitContext_UI) {
+    testSchema();
+
     modInit.setComponentAlias({alias: "page.layout.admin", component: DefaultPageLayout});
 
     const menuManager = modInit.getMenuManager();

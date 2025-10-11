@@ -10,8 +10,8 @@
 
     "jsx": "react-jsx",
     "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
 
     "rewriteRelativeImportExtensions": true,
     "esModuleInterop": true,
