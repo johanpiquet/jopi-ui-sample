@@ -1,19 +1,16 @@
 import 'primeicons/primeicons.css';
-import { PrimeReactProvider } from 'primereact/api';
 import 'primeflex/primeflex.css';
 import 'primereact/resources/primereact.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import "./index.css";
+import "./defaultPageLayout.css";
 
-import React, {useState, useRef, type Ref} from 'react';
-import { Sidebar } from 'primereact/sidebar';
-import { Button } from 'primereact/button';
-import { Avatar } from 'primereact/avatar';
-import { Ripple } from 'primereact/ripple';
-import { StyleClass } from 'primereact/styleclass';
+import React, {useRef} from "react";
+import {PrimeReactProvider} from "primereact/api";
+import {StyleClass} from "primereact/styleclass";
+import {Ripple} from "primereact/ripple";
+import {Avatar} from "primereact/avatar";
 
-export default function HeadlessDemo() {
-    const [visible, setVisible] = useState<boolean>(true);
+export default function({children}: { children: React.ReactNode}) {
     const btnRef1 = useRef<any>(null);
     const btnRef2 = useRef<any>(null);
     const btnRef3 = useRef<any>(null);
@@ -241,6 +238,9 @@ export default function HeadlessDemo() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                {children}
             </div>
         </PrimeReactProvider>
     )

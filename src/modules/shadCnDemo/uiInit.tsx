@@ -2,7 +2,7 @@ import {isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite-ui";
 import {nEvents} from "jopi-node-space";
 
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
-import {AudioWaveform, Command, Frame, GalleryVerticalEnd, Map, PieChart} from "lucide-react";
+import {AudioWaveform, Command, Frame, GalleryVerticalEnd, Map, PieChart, SquareTerminal} from "lucide-react";
 
 if (isBrowserSide()) {
     nEvents.enableEventSpying((name, e) => {
@@ -36,6 +36,17 @@ export default function(modInit: ModuleInitContext_UI) {
         teamsMenu.append({key: "Acme 1", url: "#", icon: GalleryVerticalEnd, plan: "Plan 1"});
         teamsMenu.append({key: "Acme 2", url: "#", icon: AudioWaveform, plan: "Plan 2"});
         teamsMenu.append({key: "Acme 3", url: "#", icon: Command, plan: "Plan 3"});
+    });
+
+    menuManager.addMenuBuilder(MenuName.LEFT_MENU, (leftMenu) => {
+        leftMenu.append({
+            key: "Features",
+            icon: SquareTerminal,
+            items: [
+                {key: "Forms", url: "/features/forms"},
+                {key: "Tests", url: "/features/tests"}
+            ]
+        });
     });
 
     nEvents.addListener("user.infosUpdated", () => {

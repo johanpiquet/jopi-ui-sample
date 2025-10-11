@@ -6,8 +6,8 @@ jopiApp.startApp(import.meta, jopiEasy => {
         .enable_automaticRoutes()
 
         .use_modules()
-            .add_module("adminLayout")
-            .add_module("demoContent")
+            //.add_module("shadCnDemo")
+            .add_module("primeReactDemo")
             .END_use_modules()
 
         // Add a JWT Token mechanism for user authentification
