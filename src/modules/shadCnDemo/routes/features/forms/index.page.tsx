@@ -1,11 +1,11 @@
 import React from "react";
 import {AdminPageLayout} from "jopi-rewrite-ui";
-import { Button } from "@/shared/components/ui/button";
+import {Button} from "@/shared/components/ui/button";
 
 //TODO: replace by an automatique discover mechanism.
 import "./myVariants.tsx";
 
-import {CheckboxFormField, InputFormField, JForm} from "jopi-rewrite/uikit";
+import {CheckboxFormField, InputFormField, JForm, JFormStateListener} from "jopi-rewrite/uikit";
 import * as ns_schema from "jopi-node-space/ns_schema";
 
 function PageContent() {
@@ -19,9 +19,6 @@ function PageContent() {
             errorMessage_minLength: "Trop petit"
         })
     });
-
-    // TODO
-    let isSending = false;
 
     return <>
         <div className="w-full flex flex-col items-center justify-center mt-20 relative">
@@ -38,7 +35,9 @@ function PageContent() {
                     <CheckboxFormField name="acceptConditions" title="Register to newsletter"
                                        description="By checking this box, you agree to our privacy policy and terms of use."/>
 
-                    { isSending ? undefined : <Button type="submit">Submit</Button> }
+                <JFormStateListener
+                    ifNotSubmitted={<Button type="submit">Submit</Button> }
+                />
 
             </JForm>
         </div>

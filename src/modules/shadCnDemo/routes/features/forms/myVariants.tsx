@@ -7,19 +7,19 @@ import { Input } from "@/shared/components/ui/input";
 import {setDefaultVariant} from "jopi-rewrite-ui";
 
 import {
-    type CheckboxFormFieldProps, type InputFormFieldProps, type JFieldState,
+    type CheckboxFormFieldProps, type InputFormFieldProps, type JFieldController,
     VariantId_CheckboxFormField, VariantId_InputFormField, useJFormField,
 } from "jopi-rewrite/uikit";
 
 import * as LabelPrimitive from "@radix-ui/react-label";
 import {cn} from "@/shared/lib/utils";
 
-function MyLabel({field, ...p}: React.ComponentProps<typeof LabelPrimitive.Root> & {field: JFieldState}) {
+function MyLabel({field, ...p}: React.ComponentProps<typeof LabelPrimitive.Root> & {field: JFieldController}) {
     return <Label
         data-slot="form-label"
         data-error={field.error}
         className={cn("data-[error=true]:text-destructive", p.className)}
-        htmlFor={field.formItemId}
+        htmlFor={field.name}
         {...p}
     />
 }
