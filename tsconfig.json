@@ -10,8 +10,8 @@
 
     "jsx": "react-jsx",
     "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
 
     "rewriteRelativeImportExtensions": true,
     "esModuleInterop": true,
@@ -28,7 +28,6 @@
     "baseUrl": ".",
 
     "paths": {
-      "@/*": ["./src/*"],
       "@/shared/*": ["./src/shared/*"]
     }
   },
