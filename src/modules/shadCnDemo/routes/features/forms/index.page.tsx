@@ -1,24 +1,22 @@
 import React from "react";
 import {AdminPageLayout, useSendJsonData} from "jopi-rewrite-ui";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { Button } from "@/shared/components/ui/button";
-import {Form} from "@/shared/components/ui/form";
-import {CheckboxFormField, InputFormField} from "@/shared/lib/formHelpers";
-import {formSchema, getFormDefaultValues} from "./schema.ts";
 
-import {Card, CardContent, CardHeader, CardTitle} from "@/shared/components/ui/card"
+//TODO: replace by an automatique discover mechanism.
+import "@/shared/lib/formHelpers";
+
+import {CheckboxFormField, InputFormField} from "jopi-rewrite/uikit";
+import {JForm} from "@/shared/lib/formHelpers";
+import * as ns_schema from "jopi-node-space/ns_schema";
 
 function PageContent() {
-    // It's our form object, which will allows managing our form state.
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: getFormDefaultValues()
+    const formSchema = ns_schema.schema({
+        login: ns_schema.string("Login"),
+        password: ns_schema.string("Password"),
+        acceptConditions: ns_schema.boolean("Accept conditions"),
     });
 
-    // It's the function called once the form is validated (again his schema)
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    function onSubmit(values: ns_schema.infer<typeof formSchema>) {
         console.log("Will submit value:", values);
         doSubmitForm(values);
     }
@@ -32,9 +30,6 @@ function PageContent() {
     });
 
     return <>
-
-        <HelpMessage/>
-
         <div className="w-full flex flex-col items-center justify-center mt-20 relative">
 
             <h2 className="text-4xl text-gray-900 font-medium ">Register</h2>
@@ -49,49 +44,22 @@ function PageContent() {
 
             <div className="mb-20"></div>
 
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                    <InputFormField name="username" form={form}
-                                    label="User name"/>
+            <JForm schema={formSchema} className="space-y-8">
+                    <InputFormField name="login"
+                                    label="Login"/>
 
-                    <InputFormField name="password" form={form}
+                    <InputFormField name="password"
                                     label="Password" description="Thank to use a strong password"
                                     placeholder="MyP@ssword"/>
 
-                    <CheckboxFormField form={form} name="allowNewsletter" label="Register to newsletter"
+                    <CheckboxFormField name="acceptConditions" label="Register to newsletter"
                                        description="By checking this box, you agree to our privacy policy and terms of use."/>
 
                     { isSending ? undefined : <Button type="submit">Submit</Button> }
-                </form>
-            </Form>
+
+            </JForm>
         </div>
     </>
-}
-
-function HelpMessage() {
-    return <div className="grid grid-cols-2 gap-4">
-        <Card>
-            <CardHeader><CardTitle>About this sample</CardTitle></CardHeader>
-            <CardContent>
-                This sample shows you how to use the form features.<br/>
-                ✓ Easy form display<br/>
-                ✓ With automatic data validation<br/>
-                ✓ Error message handling.<br/>
-            </CardContent>
-        </Card>
-        <Card>
-            <CardHeader><CardTitle>What to see?</CardTitle></CardHeader>
-            <CardContent>
-                <strong>Front part:</strong><br/>
-                ✓ How to create a form.<br/>
-                ✓ How to validate this form.<br/>
-                ✓ How to confirm form submission.<br/>
-                <br/>
-                <strong>Server part:</strong><br/>
-                ✓ How to validate the data.<br/>
-            </CardContent>
-        </Card>
-    </div>
 }
 
 export default function() {
