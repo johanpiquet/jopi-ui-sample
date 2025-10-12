@@ -7,7 +7,7 @@ import {AudioWaveform, Command, Frame, GalleryVerticalEnd, Map, PieChart, Square
 
 if (isBrowserSide()) {
     nEvents.enableEventSpying((name, e) => {
-        console.log(`Event spy - ${name}`, e);
+        //console.log(`Event spy - ${name}`, e);
     });
 }
 
