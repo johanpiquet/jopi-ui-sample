@@ -8,7 +8,7 @@ import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail,} fro
 import {type MenuItem, MenuName, useMenu, useUserInfos} from "jopi-rewrite-ui";
 import {LogIn} from "lucide-react";
 import { useNavigate } from "react-router"
-import {nEvents} from "jopi-node-space";
+import ns_events from "jopi-node-space/ns_events";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const teamsMenu = useMenu("teams");
@@ -24,7 +24,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     };
 
     const handleLinkClick = (menuItem: MenuItem, menuName: string) => {
-        nEvents.sendEvent("app.menu.click", {menuName, menuItem});
+        ns_events.sendEvent("app.menu.click", {menuName, menuItem});
     };
 
     return (

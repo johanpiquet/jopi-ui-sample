@@ -1,12 +1,12 @@
 import {isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite-ui";
-import {nEvents} from "jopi-node-space";
+import ns_events from "jopi-node-space/ns_events";
 import * as Person from "./schemas/person.ts";
 
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
 import {AudioWaveform, Command, Frame, GalleryVerticalEnd, Map, PieChart, SquareTerminal} from "lucide-react";
 
 if (isBrowserSide()) {
-    nEvents.enableEventSpying((name, e) => {
+    ns_events.enableEventSpying((name, e) => {
         //console.log(`Event spy - ${name}`, e);
     });
 }
@@ -60,7 +60,7 @@ export default function(modInit: ModuleInitContext_UI) {
         });
     });
 
-    nEvents.addListener("user.infosUpdated", () => {
+    ns_events.addListener("user.infosUpdated", () => {
         modInit.ifUserHasRoles(["admin", "writer"], () => {
             // alert("has the roles [\"admin\", \"writer\"]")
         })
