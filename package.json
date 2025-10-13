@@ -13,7 +13,6 @@
   "author": "Johan PIQUET",
   "description": "Sample UI for Jopi Rewrite",
   "engines": {
-    "bun": "^1.2.18",
     "node": ">=22.18.0"
   },
   "type": "module",
