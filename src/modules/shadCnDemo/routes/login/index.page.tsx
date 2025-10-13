@@ -8,17 +8,15 @@ import {
     Composite, useUseStateRefresh
 } from "jopi-rewrite-ui";
 
-import NodeSpace from "jopi-node-space";
+import * as ns_translate from "jopi-node-space/ns_translate";
 import logo from "./logo.png";
 
-const nTR = NodeSpace.translate;
-
-const trInvalidIdentifier = nTR.translate("page.login.invalidIdentifierOrPassword", {default: "Invalid identifier2"});
-const trCheckMailOrPassword = nTR.translate("page.login.checkMailOrPassword", {default: "Check you e-mail and/or password"});
-const trRememberMe = nTR.translate("page.login.rememberMe", {default: "Remember me"});
-const trForgotPassword = nTR.translate("page.login.forgotPassword", {default: "Forgot password?"});
-const trWelcomeBack = nTR.translate("page.login.welcomeBack", {default: "Welcome back! Please sign in to continue"});
-const trSignIn = nTR.translate("page.login.signIn", {default: "Sign in"});
+const trInvalidIdentifier = ns_translate.translate("page.login.invalidIdentifierOrPassword", {default: "Invalid identifier2"});
+const trCheckMailOrPassword = ns_translate.translate("page.login.checkMailOrPassword", {default: "Check you e-mail and/or password"});
+const trRememberMe = ns_translate.translate("page.login.rememberMe", {default: "Remember me"});
+const trForgotPassword = ns_translate.translate("page.login.forgotPassword", {default: "Forgot password?"});
+const trWelcomeBack = ns_translate.translate("page.login.welcomeBack", {default: "Welcome back! Please sign in to continue"});
+const trSignIn = ns_translate.translate("page.login.signIn", {default: "Sign in"});
 
 export default function() {
     const navigate = useNavigateSafe();
