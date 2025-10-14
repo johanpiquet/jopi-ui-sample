@@ -23,7 +23,7 @@
     "allowJs": false,
 
     "allowSyntheticDefaultImports": true,
-    "types": ["@jopi-loader/types", "@types/bun"],
+    "types": ["jopi-rewrite/types", "@types/bun"],
 
     "baseUrl": ".",
 

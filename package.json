@@ -20,8 +20,8 @@
     "build": "rm -rf ./dist; npx tsc",
     "clean": "rm -rf ./dist; rm -rf .turbo; rm tsconfig.tsbuildinfo",
     "tsc": "npx tsc",
-    "devNodeUI": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopin dist/index.js",
-    "devBunUI": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopib src/index.ts"
+    "devNodeUI": "JOPI_LOG=1 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopin dist/index.js",
+    "devBunUI": "JOPI_LOG=1 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopib src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
