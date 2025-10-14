@@ -8,7 +8,7 @@ import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail,} fro
 import {type MenuItem, MenuName, useMenu, useUserInfos} from "jopi-rewrite-ui";
 import {LogIn} from "lucide-react";
 import { useNavigate } from "react-router"
-import ns_events from "jopi-node-space/ns_events";
+import * as ns_events from "jopi-node-space/ns_events";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const teamsMenu = useMenu("teams");
