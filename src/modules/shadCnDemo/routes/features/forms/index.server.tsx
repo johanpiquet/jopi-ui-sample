@@ -1,5 +1,5 @@
 import {formSchema} from "./schema.ts";
-import {nTimer} from "jopi-node-space";
+import * as ns_timer from "jopi-node-space/ns_timer";
 import {RouteServerContext} from "jopi-rewrite";
 
 export default function(ctx: RouteServerContext) {
@@ -9,7 +9,7 @@ export default function(ctx: RouteServerContext) {
         console.log("Server received:", data);
 
         // Allow testing the submit button hiding when submitting.
-        await nTimer.tick(1000);
+        await ns_timer.tick(1000);
 
         return req.jsonResponse({isOk: true, data});
     });
