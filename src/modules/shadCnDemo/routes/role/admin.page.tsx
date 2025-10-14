@@ -1,4 +1,4 @@
-import {AdminPageLayout, RequireRoles} from "jopi-rewrite-ui";
+import {AdminPageLayout, RequireRoles} from "jopi-rewrite/ui";
 
 export default function() {
     return <AdminPageLayout>

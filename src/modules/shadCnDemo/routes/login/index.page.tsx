@@ -6,7 +6,7 @@ import {
     useNavigateSafe,
     useSearchParamsSafe,
     Composite, useUseStateRefresh
-} from "jopi-rewrite-ui";
+} from "jopi-rewrite/ui";
 
 import * as ns_translate from "jopi-node-space/ns_translate";
 import logo from "./logo.png";

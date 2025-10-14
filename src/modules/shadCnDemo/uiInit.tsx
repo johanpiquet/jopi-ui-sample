@@ -1,4 +1,4 @@
-import {isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite-ui";
+import {isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite/ui";
 import * as ns_events from "jopi-node-space/ns_events";
 import * as Person from "./schemas/person.ts";
 

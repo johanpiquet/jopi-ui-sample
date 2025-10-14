@@ -29,7 +29,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/components/ui/sidebar"
-import {type UiUserInfos, useLogOutUser, useNavigateSafe} from "jopi-rewrite-ui";
+import {type UiUserInfos, useLogOutUser, useNavigateSafe} from "jopi-rewrite/ui";
 
 export function NavUser({user}: { user: UiUserInfos }) {
   const { isMobile } = useSidebar()

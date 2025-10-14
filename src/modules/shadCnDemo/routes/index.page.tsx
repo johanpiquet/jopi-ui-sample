@@ -1,4 +1,4 @@
-import {AdminPageLayout} from "jopi-rewrite-ui";
+import {AdminPageLayout} from "jopi-rewrite/ui";
 
 export default function Page() {
     return <AdminPageLayout>

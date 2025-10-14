@@ -5,7 +5,7 @@ import { NavFavorites } from "./nav-favorites.tsx"
 import { NavUser } from "./nav-user.tsx"
 import { TeamSwitcher } from "./team-switcher.tsx"
 import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail,} from "@/shared/components/ui/sidebar"
-import {type MenuItem, MenuName, useMenu, useUserInfos} from "jopi-rewrite-ui";
+import {type MenuItem, MenuName, useMenu, useUserInfos} from "jopi-rewrite/ui";
 import {LogIn} from "lucide-react";
 import { useNavigate } from "react-router"
 import * as ns_events from "jopi-node-space/ns_events";

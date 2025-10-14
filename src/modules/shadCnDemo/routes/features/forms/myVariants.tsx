@@ -4,7 +4,7 @@ import { Checkbox } from "@/shared/components/ui/checkbox";
 import { Label } from "@/shared/components/ui/label";
 import { Input } from "@/shared/components/ui/input";
 
-import {setDefaultVariant} from "jopi-rewrite-ui";
+import {setDefaultVariant} from "jopi-rewrite/ui";
 
 import {
     type CheckboxFormFieldProps, type InputFormFieldProps, type JFieldController,

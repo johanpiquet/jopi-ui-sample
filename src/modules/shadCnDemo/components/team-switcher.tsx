@@ -18,7 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/components/ui/sidebar"
-import type {MenuItem} from "jopi-rewrite-ui";
+import type {MenuItem} from "jopi-rewrite/ui";
 
 export function TeamSwitcher({teams}: { teams: MenuItem[] }) {
   const { isMobile } = useSidebar()
