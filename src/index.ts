@@ -1,5 +1,9 @@
 import {jopiApp} from "jopi-rewrite";
+import {registerUiKit} from "jopi-rewrite/uikit";
 import myUsers from "./myUsers.json" with { type: "json" };
+
+// Allow using ui-kit features.
+registerUiKit();
 
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.new_webSite()

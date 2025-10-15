@@ -1,15 +1,9 @@
-import {isBrowserSide, MenuName, ModuleInitContext_UI} from "jopi-rewrite/ui";
-import * as ns_events from "jopi-node-space/ns_events";
+import {isBrowserSide, MenuName} from "jopi-rewrite/ui";
+import {UiKitModule} from "jopi-rewrite/uikit";
 import * as Person from "./schemas/person.ts";
 
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
 import {AudioWaveform, Command, Frame, GalleryVerticalEnd, SquareTerminal} from "lucide-react";
-
-if (isBrowserSide()) {
-    ns_events.enableEventSpying((name, e) => {
-        //console.log(`Event spy - ${name}`, e);
-    });
-}
 
 function testSchema() {
     let p: Person.Type = {
@@ -19,22 +13,35 @@ function testSchema() {
     console.log("testSchema:", p);
 }
 
-export default function(modInit: ModuleInitContext_UI) {
+// Note: the default class received is "ModuleInitContext_UI"
+// but ui-kit overrides the creation step to provide an instance of UiKitModule.
+//
+export default function(myModule: UiKitModule) {
+    if (isBrowserSide()) {
+        myModule.events.enableEventSpying((name, e) => {
+            //console.log(`Event spy - ${name}`, e);
+        });
+    }
+
+    myModule.addUiInitializer(() => {
+        console.log('Module A - UI initialized (Default)');
+    });
+
     testSchema();
 
-    modInit.setComponentAlias({alias: "page.layout.admin", component: DefaultPageLayout});
+    myModule.setComponentAlias({alias: "page.layout.admin", component: DefaultPageLayout});
 
-    const menuManager = modInit.getMenuManager();
+    const menuManager = myModule.getMenuManager();
 
     menuManager.addMenuBuilder(MenuName.LEFT_MENU, (leftMenu) => {
         // The menu builders are called each time user roles are updated.
         // Which includes login/logout.
         //
-        modInit.ifUserHasRoles(["admin"], () => {
+        myModule.ifUserHasRoles(["admin"], () => {
             leftMenu.selectItem(["My roles", "Role Admin"]).value = {url: "/role/admin"};
         });
 
-        modInit.ifUserHasRoles(["writer"], () => {
+        myModule.ifUserHasRoles(["writer"], () => {
             leftMenu.selectItem(["My roles", "Role Writer"]).value = {url: "/role/writer"};
         });
     });
@@ -60,8 +67,8 @@ export default function(modInit: ModuleInitContext_UI) {
         });
     });
 
-    ns_events.addListener("user.infosUpdated", () => {
-        modInit.ifUserHasRoles(["admin", "writer"], () => {
+    myModule.events.addListener("user.infosUpdated", () => {
+        myModule.ifUserHasRoles(["admin", "writer"], () => {
             // alert("has the roles [\"admin\", \"writer\"]")
         })
     });
