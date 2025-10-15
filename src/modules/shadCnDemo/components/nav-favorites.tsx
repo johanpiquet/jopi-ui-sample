@@ -23,7 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/components/ui/sidebar"
-import {type MenuItem} from "jopi-rewrite/ui";
+import {type MenuItem} from "jopi-rewrite/uikit";
 import {Link} from "react-router";
 
 export function NavFavorites({favorites}: { favorites: MenuItem[] }) {

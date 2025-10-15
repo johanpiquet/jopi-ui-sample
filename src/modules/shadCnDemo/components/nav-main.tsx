@@ -18,7 +18,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/shared/components/ui/sidebar"
-import {type MenuItem} from "jopi-rewrite/ui";
+import {type MenuItem} from "jopi-rewrite/uikit";
 import React from "react";
 
 export function NavMain({items, onClick}: { items: MenuItem[], onClick?: (subItem: MenuItem, event: React.MouseEvent<HTMLAnchorElement>)=>void}) {
