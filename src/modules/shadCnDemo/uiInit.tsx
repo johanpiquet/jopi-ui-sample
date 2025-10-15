@@ -1,5 +1,5 @@
-import {isBrowserSide, MenuName} from "jopi-rewrite/ui";
-import {UiKitModule} from "jopi-rewrite/uikit";
+import {UiKitModule, MenuName} from "jopi-rewrite/uikit";
+import {isBrowser} from "jopi-node-space/ns_what";
 import * as Person from "./schemas/person.ts";
 
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
@@ -17,7 +17,7 @@ function testSchema() {
 // but ui-kit overrides the creation step to provide an instance of UiKitModule.
 //
 export default function(myModule: UiKitModule) {
-    if (isBrowserSide()) {
+    if (isBrowser) {
         myModule.events.enableEventSpying((name, e) => {
             //console.log(`Event spy - ${name}`, e);
         });

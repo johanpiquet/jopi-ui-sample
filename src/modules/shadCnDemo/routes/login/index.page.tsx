@@ -1,12 +1,6 @@
 import React from "react";
-import {
-    useLogOutUser,
-    useUserInfos,
-    useFormSubmit,
-    useNavigateSafe,
-    useSearchParamsSafe,
-    Composite, useUseStateRefresh
-} from "jopi-rewrite/ui";
+import {useNavigateSafe, useSearchParamsSafe, Composite} from "jopi-rewrite/ui";
+import {useUserInfos, useLogOutUser, useUseStateRefresh, useFormSubmit} from "jopi-rewrite/uikit";
 
 import * as ns_translate from "jopi-node-space/ns_translate";
 import logo from "./logo.png";

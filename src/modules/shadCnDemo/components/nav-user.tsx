@@ -9,27 +9,11 @@ import {
   Sparkles,
 } from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu"
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "@/shared/components/ui/sidebar"
-import {type UiUserInfos, useLogOutUser, useNavigateSafe} from "jopi-rewrite/ui";
+import {Avatar, AvatarFallback, AvatarImage,} from "@/shared/components/ui/avatar"
+import {DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger,} from "@/shared/components/ui/dropdown-menu"
+import {SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar} from "@/shared/components/ui/sidebar";
+import {type UiUserInfos, useNavigateSafe} from "jopi-rewrite/ui";
+import {useLogOutUser} from "jopi-rewrite/uikit";
 
 export function NavUser({user}: { user: UiUserInfos }) {
   const { isMobile } = useSidebar()
