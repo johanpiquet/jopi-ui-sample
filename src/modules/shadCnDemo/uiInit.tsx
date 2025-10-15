@@ -3,7 +3,7 @@ import * as ns_events from "jopi-node-space/ns_events";
 import * as Person from "./schemas/person.ts";
 
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
-import {AudioWaveform, Command, Frame, GalleryVerticalEnd, Map, PieChart, SquareTerminal} from "lucide-react";
+import {AudioWaveform, Command, Frame, GalleryVerticalEnd, SquareTerminal} from "lucide-react";
 
 if (isBrowserSide()) {
     ns_events.enableEventSpying((name, e) => {
