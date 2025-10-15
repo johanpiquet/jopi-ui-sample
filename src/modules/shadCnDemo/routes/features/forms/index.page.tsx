@@ -1,5 +1,5 @@
 import React from "react";
-import {AdminPageLayout} from "jopi-rewrite/ui";
+import {AdminPageLayout} from "jopi-rewrite/uikit";
 import {Button} from "@/shared/components/ui/button";
 
 //TODO: replace by an automatique discover mechanism.
