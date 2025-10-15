@@ -7,7 +7,7 @@ registerUiKit();
 
 jopiApp.globalConfig()
         .configure_reactRouter()
-           .disableReactRouter();
+        .disableReactRouter();
 
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.new_webSite()

@@ -24,7 +24,7 @@ import {
   useSidebar,
 } from "@/shared/components/ui/sidebar"
 import {type MenuItem} from "jopi-rewrite/uikit";
-import {Link} from "react-router";
+import {RouterLink} from "jopi-rewrite/uikit";
 
 export function NavFavorites({favorites}: { favorites: MenuItem[] }) {
   const { isMobile } = useSidebar()
@@ -36,10 +36,10 @@ export function NavFavorites({favorites}: { favorites: MenuItem[] }) {
         {favorites.map((item) => (
           <SidebarMenuItem key={item.title}>
             <SidebarMenuButton asChild>
-              <Link to={item.url!}>
+              <RouterLink to={item.url!}>
                 <item.icon />
                 <span>{item.title}</span>
-              </Link>
+              </RouterLink>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

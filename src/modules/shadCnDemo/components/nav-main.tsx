@@ -1,7 +1,7 @@
 "use client"
 
 import { ChevronRight } from "lucide-react"
-import { Link } from "react-router";
+import { RouterLink } from "jopi-rewrite/uikit";
 
 import {
   Collapsible,
@@ -45,8 +45,8 @@ export function NavMain({items, onClick}: { items: MenuItem[], onClick?: (subIte
                   {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild isActive={subItem.isActive}>
-                        <Link to={subItem.url||"#"}
-                              onClick={(event) => onClick?.(subItem, event)}>{subItem.title}</Link>
+                        <RouterLink to={subItem.url||"#"}
+                              onClick={(event) => onClick?.(subItem, event)}>{subItem.title}</RouterLink>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   ))}
