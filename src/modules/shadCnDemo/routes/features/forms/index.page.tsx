@@ -1,25 +1,12 @@
 import React from "react";
 import {AdminPageLayout} from "jopi-rewrite/uikit";
 import {Button} from "@/shared/components/ui/button";
-
-//TODO: replace by an automatique discover mechanism.
-import "./myVariants.tsx";
+import * as myVariants from "./myVariants.tsx";
 
 import {CheckboxFormField, InputFormField, JForm, JFormStateListener} from "jopi-rewrite/uikit";
-import * as ns_schema from "jopi-node-space/ns_schema";
+import {formSchema} from "./schema.ts";
 
 function PageContent() {
-    const formSchema = ns_schema.schema({
-        login: ns_schema.string("Login", false, {default: "My super login"}),
-
-        password: ns_schema.string("Password", false, {
-            minLength: 3,
-            errorMessage_isRequired: "Password is required",
-            errorMessage_theValueIsInvalid: "Password must be at least 3 characters long",
-            errorMessage_minLength: "Trop petit"
-        })
-    });
-
     return <>
         <div className="w-full flex flex-col items-center justify-center mt-20 relative">
 
@@ -27,18 +14,15 @@ function PageContent() {
 
             <div className="mb-20"></div>
 
-            <JForm schema={formSchema} className="space-y-8">
-                    <InputFormField name="login" title="Login"/>
+            <JForm schema={formSchema} className="space-y-8" variants={myVariants}>
+                    <InputFormField name="username" title="Login"/>
 
-                    <InputFormField name="password" title="Password" placeholder="MyP@ssword"/>
+                    <InputFormField name="password" title="Password" placeholder="My strong password"/>
 
-                    <CheckboxFormField name="acceptConditions" title="Register to newsletter"
+                    <CheckboxFormField name="allowNewsletter" title="Register to newsletter"
                                        description="By checking this box, you agree to our privacy policy and terms of use."/>
 
-                <JFormStateListener
-                    ifNotSubmitted={<Button type="submit">Submit</Button> }
-                />
-
+                <JFormStateListener ifNotSubmitted={<Button type="submit">Submit</Button> } />
             </JForm>
         </div>
     </>

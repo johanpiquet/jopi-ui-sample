@@ -1,16 +1,8 @@
 import React from "react";
-
 import { Checkbox } from "@/shared/components/ui/checkbox";
 import { Label } from "@/shared/components/ui/label";
 import { Input } from "@/shared/components/ui/input";
-
-import {setDefaultVariant} from "jopi-rewrite/uikit";
-
-import {
-    type CheckboxFormFieldProps, type InputFormFieldProps, type JFieldController,
-    VariantId_CheckboxFormField, VariantId_InputFormField, useJFormField,
-} from "jopi-rewrite/uikit";
-
+import {type CheckboxFormFieldProps, type InputFormFieldProps, type JFieldController, useJFormField} from "jopi-rewrite/uikit";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import {cn} from "@/shared/lib/utils";
 
@@ -24,7 +16,7 @@ function MyLabel({field, ...p}: React.ComponentProps<typeof LabelPrimitive.Root>
     />
 }
 
-setDefaultVariant(VariantId_InputFormField, (p: InputFormFieldProps) => {
+export function InputFormField(p: InputFormFieldProps) {
     let field = useJFormField(p.name);
 
     return <div className="grid gap-2">
@@ -38,9 +30,9 @@ setDefaultVariant(VariantId_InputFormField, (p: InputFormFieldProps) => {
         {p.description ? p.description : undefined}
         {field.error ? <div className="text-destructive">{field.errorMessage||"Invalid value"}</div> : undefined}
     </div>
-});
+}
 
-setDefaultVariant(VariantId_CheckboxFormField, (p: CheckboxFormFieldProps) => {
+export function CheckboxFormField(p: CheckboxFormFieldProps) {
     let field = useJFormField(p.name);
 
     return <div className="grid gap-2">
@@ -60,4 +52,4 @@ setDefaultVariant(VariantId_CheckboxFormField, (p: CheckboxFormFieldProps) => {
             </div>
         </Label>
     </div>
-});
+}
