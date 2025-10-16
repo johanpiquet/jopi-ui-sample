@@ -17,6 +17,7 @@ function PageContent() {
             <JForm schema={formSchema} className="space-y-8" variants={myVariants}>
                 <AutoFormField name="username" />
                 <AutoFormField name="password" />
+                <AutoFormField name="age" />
                 <AutoFormField name="allowNewsletter" />
 
                 <JFormStateListener ifNotSubmitted={<Button type="submit">Submit</Button> } />

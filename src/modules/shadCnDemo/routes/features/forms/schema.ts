@@ -16,6 +16,12 @@ export const formSchema = ns_schema.schema({
         errorMessage_theValueIsInvalid: "Password must be at least 8 characters."
     }),
 
+    age: ns_schema.number("Your age", false, {
+       // placeholder: "18",
+        minValue: 18,
+        errorMessage_minValue: "You must be at least 18 years old."
+    }),
+
     allowNewsletter: ns_schema.boolean("Register to newsletter", false, {
         default: true,
         requireTrue: true,

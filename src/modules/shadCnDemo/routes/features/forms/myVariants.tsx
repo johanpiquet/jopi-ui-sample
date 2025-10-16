@@ -57,3 +57,5 @@ export function CheckboxFormField(p: CheckboxFormFieldProps) {
         </Label>
     </div>
 }
+
+export const NumberFormField = TextFormField;
