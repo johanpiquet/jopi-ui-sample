@@ -1,5 +1,5 @@
 import React from "react";
-import {AdminPageLayout, AutoFormField} from "jopi-rewrite/uikit";
+import {AdminPageLayout, JAutoFormField, JFormMessage} from "jopi-rewrite/uikit";
 import {Button} from "@/shared/components/ui/button";
 import * as myVariants from "./myVariants.tsx";
 
@@ -15,12 +15,14 @@ function PageContent() {
             <div className="mb-20"></div>
 
             <JForm schema={formSchema} className="space-y-8" variants={myVariants}>
-                <AutoFormField name="username" />
-                <AutoFormField name="password" />
-                <AutoFormField name="age" />
-                <AutoFormField name="allowNewsletter" />
+                <JFormMessage isBefore={true} />
+                <JAutoFormField name="username" />
+                <JAutoFormField name="password" />
+                <JAutoFormField name="age" />
+                <JAutoFormField name="allowNewsletter" />
 
                 <JFormStateListener ifNotSubmitted={<Button type="submit">Submit</Button> } />
+                <JFormMessage isBefore={false} />
             </JForm>
         </div>
     </>

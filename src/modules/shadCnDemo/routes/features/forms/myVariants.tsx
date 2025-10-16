@@ -3,11 +3,11 @@ import { Checkbox } from "@/shared/components/ui/checkbox";
 import { Label } from "@/shared/components/ui/label";
 import { Input } from "@/shared/components/ui/input";
 import {
-    type CheckboxFormFieldProps,
+    type JCheckboxFormFieldProps, type JFormSubmitMessage,
     IfTrue,
-    type InputFormFieldProps,
+    type JInputFormFieldProps,
     type JFieldController, UseIfDefined,
-    useJFormField
+    useJFormField, type JFormMessageProps
 } from "jopi-rewrite/uikit";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import {cn} from "@/shared/lib/utils";
@@ -22,7 +22,7 @@ function MyLabel({field, ...p}: React.ComponentProps<typeof LabelPrimitive.Root>
     />
 }
 
-export function TextFormField(p: InputFormFieldProps) {
+export function TextFormField(p: JInputFormFieldProps) {
     let field = useJFormField(p.name);
 
     return <div className="grid gap-2">
@@ -39,7 +39,7 @@ export function TextFormField(p: InputFormFieldProps) {
     </div>
 }
 
-export function CheckboxFormField(p: CheckboxFormFieldProps) {
+export function CheckboxFormField(p: JCheckboxFormFieldProps) {
     let field = useJFormField(p.name);
 
     return <div className="grid gap-2">
@@ -59,3 +59,17 @@ export function CheckboxFormField(p: CheckboxFormFieldProps) {
 }
 
 export const NumberFormField = TextFormField;
+
+export function FormMessage({message, ...p}: JFormMessageProps) {
+    if (!message) return null;
+
+    if (message.isSubmitted) {
+        return <div id={p.id} className={p.className || "text-muted-foreground text-sm"}>Form has been submitted</div>
+    }
+
+    if (!message.isOk) {
+        return <div id={p.id} className={p.className || "text-destructive"}>Form has errors</div>
+    }
+
+    return <div id={p.id} className={p.className || "text-muted-foreground text-sm"} >{message.message}</div>
+}
