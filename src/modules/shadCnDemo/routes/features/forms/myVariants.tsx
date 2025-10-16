@@ -2,7 +2,13 @@ import React from "react";
 import { Checkbox } from "@/shared/components/ui/checkbox";
 import { Label } from "@/shared/components/ui/label";
 import { Input } from "@/shared/components/ui/input";
-import {type CheckboxFormFieldProps, type InputFormFieldProps, type JFieldController, useJFormField} from "jopi-rewrite/uikit";
+import {
+    type CheckboxFormFieldProps,
+    IfTrue,
+    type InputFormFieldProps,
+    type JFieldController, UseIfDefined,
+    useJFormField
+} from "jopi-rewrite/uikit";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import {cn} from "@/shared/lib/utils";
 
@@ -27,8 +33,9 @@ export function TextFormField(p: InputFormFieldProps) {
                value={field.value}
         />
 
-        {p.description ? p.description : undefined}
-        {field.error ? <div className="text-destructive">{field.errorMessage||"Invalid value"}</div> : undefined}
+        { UseIfDefined(p.description) }
+        { IfTrue(field.error, <div className="text-destructive">{field.errorMessage}</div>) }
+
     </div>
 }
 
@@ -44,11 +51,8 @@ export function CheckboxFormField(p: CheckboxFormFieldProps) {
             />
             <div className="grid gap-1.5 font-normal">
                 <p className="text-sm leading-none font-medium">{p.title}</p>
-                {
-                    p.description && !field.error
-                        ? <p className="text-muted-foreground text-sm">{p.description}</p>
-                        : undefined
-                }
+                {IfTrue(p.description ,<p className="text-muted-foreground text-sm">{p.description}</p>)}
+                {IfTrue(field.error ,<div className="text-destructive">{field.errorMessage}</div>)}
             </div>
         </Label>
     </div>

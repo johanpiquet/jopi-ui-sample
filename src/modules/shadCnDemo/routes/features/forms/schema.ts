@@ -18,6 +18,8 @@ export const formSchema = ns_schema.schema({
 
     allowNewsletter: ns_schema.boolean("Register to newsletter", false, {
         default: true,
+        requireTrue: true,
+        errorMessage_requireTrue: "You must accept the newsletter.",
         description: "By checking this box, you agree to our privacy policy and terms of use.",
         errorMessage_theValueIsInvalid: "You must accept the terms of use."
     })
