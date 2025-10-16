@@ -60,39 +60,60 @@ export function CheckboxFormField(p: JCheckboxFormFieldProps) {
 
 export const NumberFormField = TextFormField;
 
+function ConfirmMessage({children}: { children: React.ReactNode }) {
+    return <div className="flex items-center justify-center">
+            <div className="max-w-3xl w-full p-2 bg-green-100 border border-green-500 rounded-lg shadow-lg text-center">
+                <p className="text-sm font-semibold text-green-800">
+                    {children}
+                </p>
+            </div>
+        </div>
+}
+
+function ErrorMessage({children}: { children: React.ReactNode }) {
+    return <div className="flex items-center justify-center">
+        <div className="max-w-3xl w-full p-2 bg-red-100 border border-red-500 rounded-lg shadow-lg text-center">
+            <p className="text-sm font-semibold text-red-800">
+                {children}
+            </p>
+        </div>
+    </div>;
+}
+
 export function FormMessage({message, ...p}: JFormMessageProps) {
     if (!message) return null;
 
     if (message.isSubmitted) {
-        return <div id={p.id} className={p.className || "text-muted-foreground text-sm"}>Form has been submitted</div>
-    }
-
-    if (message.isOk) {
         // false means hiding the message.
-        if (p.submittedMessage===false) return null;
+        if (p.submittedMessage === false) return null;
 
         let t: UiText = "Form has been submitted";
         if (p.submittedMessage) t = p.submittedMessage;
         else if (message.message) t = message.message;
 
-        return <div id={p.id} className={p.className || "text-muted-foreground text-sm"} >{message.message}</div>
-    } else {
-        if (message.fieldErrors) {
-            // false means hiding the message.
-            if (p.fieldErrorMessage===false) return null;
-        }
-
-        let t: UiText = "Form has errors";
-
-        if (message.fieldErrors) {
-            if (p.fieldErrorMessage) t = p.fieldErrorMessage;
-            else t = "Some fields have errors";
-        } else {
-            if (p.errorMessage) t = p.errorMessage;
-            else if (message.message) t = message.message;
-        }
-
-        return <div id={p.id} className={p.className || "text-destructive"}>{t}</div>
+        return <ConfirmMessage>{t}</ConfirmMessage>
     }
 
+    if (message.isOk) {
+        // Ok but not submitted? Hidde.
+        return null;
+    }
+
+    if (message.fieldErrors) {
+        // false means hiding the message.
+        if (p.fieldErrorMessage === false) return null;
+    }
+
+    let t: UiText = "Form has errors";
+
+    if (message.fieldErrors) {
+
+        if (p.fieldErrorMessage) t = p.fieldErrorMessage;
+        else t = "Some fields have errors";
+    } else {
+        if (p.errorMessage) t = p.errorMessage;
+        else if (message.message) t = message.message;
+    }
+
+    return <ErrorMessage>{t}</ErrorMessage>
 }

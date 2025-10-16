@@ -11,13 +11,13 @@ export const formSchema = ns_schema.schema({
     }),
 
     password: ns_schema.string("Password", false, {
-        //default: "mysuperPassw@rd",
+        default: "mysuperPassw@rd",
         placeholder: "My strong password",
         errorMessage_theValueIsInvalid: "Password must be at least 8 characters."
     }),
 
     age: ns_schema.number("Your age", false, {
-       // placeholder: "18",
+        //default: 18,
         minValue: 18,
         errorMessage_minValue: "You must be at least 18 years old."
     }),
