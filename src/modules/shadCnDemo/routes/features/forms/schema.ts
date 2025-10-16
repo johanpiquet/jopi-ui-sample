@@ -6,18 +6,20 @@ import * as ns_schema from "jopi-node-space/ns_schema";
  */
 export const formSchema = ns_schema.schema({
     username: ns_schema.string("User name", false, {
-        errorMessage_theValueIsInvalid: "Username must be at least 2 characters.",
-        default: "myusername"
+        default: "myusername",
+        errorMessage_theValueIsInvalid: "Username must be at least 2 characters."
     }),
 
     password: ns_schema.string("Password", false, {
-        errorMessage_theValueIsInvalid: "Password must be at least 8 characters.",
-        default: "mysuperPassw@rd"
+        //default: "mysuperPassw@rd",
+        placeholder: "My strong password",
+        errorMessage_theValueIsInvalid: "Password must be at least 8 characters."
     }),
 
-    allowNewsletter: ns_schema.boolean("Allow Newsletter", false, {
-        errorMessage_theValueIsInvalid: "You must accept the terms of use.",
-        default: true
+    allowNewsletter: ns_schema.boolean("Register to newsletter", false, {
+        default: true,
+        description: "By checking this box, you agree to our privacy policy and terms of use.",
+        errorMessage_theValueIsInvalid: "You must accept the terms of use."
     })
 });
 

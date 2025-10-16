@@ -1,9 +1,9 @@
 import React from "react";
-import {AdminPageLayout} from "jopi-rewrite/uikit";
+import {AdminPageLayout, AutoFormField} from "jopi-rewrite/uikit";
 import {Button} from "@/shared/components/ui/button";
 import * as myVariants from "./myVariants.tsx";
 
-import {CheckboxFormField, InputFormField, JForm, JFormStateListener} from "jopi-rewrite/uikit";
+import {JForm, JFormStateListener} from "jopi-rewrite/uikit";
 import {formSchema} from "./schema.ts";
 
 function PageContent() {
@@ -15,12 +15,9 @@ function PageContent() {
             <div className="mb-20"></div>
 
             <JForm schema={formSchema} className="space-y-8" variants={myVariants}>
-                    <InputFormField name="username" title="Login"/>
-
-                    <InputFormField name="password" title="Password" placeholder="My strong password"/>
-
-                    <CheckboxFormField name="allowNewsletter" title="Register to newsletter"
-                                       description="By checking this box, you agree to our privacy policy and terms of use."/>
+                <AutoFormField name="username" />
+                <AutoFormField name="password" />
+                <AutoFormField name="allowNewsletter" />
 
                 <JFormStateListener ifNotSubmitted={<Button type="submit">Submit</Button> } />
             </JForm>

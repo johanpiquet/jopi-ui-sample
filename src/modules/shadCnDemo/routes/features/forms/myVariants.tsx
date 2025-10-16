@@ -16,7 +16,7 @@ function MyLabel({field, ...p}: React.ComponentProps<typeof LabelPrimitive.Root>
     />
 }
 
-export function InputFormField(p: InputFormFieldProps) {
+export function TextFormField(p: InputFormFieldProps) {
     let field = useJFormField(p.name);
 
     return <div className="grid gap-2">
