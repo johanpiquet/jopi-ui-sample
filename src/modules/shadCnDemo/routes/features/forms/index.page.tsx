@@ -10,9 +10,9 @@ import * as ns_schema from "jopi-node-space/ns_schema";
 
 function PageContent() {
     const formSchema = ns_schema.schema({
-        login: ns_schema.string("Login", {default: "My super login"}),
+        login: ns_schema.string("Login", false, {default: "My super login"}),
 
-        password: ns_schema.string("Password", {
+        password: ns_schema.string("Password", false, {
             minLength: 3,
             errorMessage_isRequired: "Password is required",
             errorMessage_theValueIsInvalid: "Password must be at least 3 characters long",
