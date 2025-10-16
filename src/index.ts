@@ -5,15 +5,8 @@ import myUsers from "./myUsers.json" with { type: "json" };
 // Allow using ui-kit features.
 registerUiKit();
 
-/*jopiApp.globalConfig()
-    .configure_bundler()
-        .dontEmbed_ReactJS()
-        .dontEmbed_ReactRouter();
-
-jopiApp.globalConfig()
-        .configure_reactRouter()
-        .disableReactRouter();
-*/
+//jopiApp.globalConfig().configure_bundler().dontEmbed_ReactJS().dontEmbed_ReactRouter();
+jopiApp.globalConfig().configure_reactRouter().disableReactRouter();
 
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.new_webSite()
