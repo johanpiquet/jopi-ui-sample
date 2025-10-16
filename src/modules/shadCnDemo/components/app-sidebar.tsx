@@ -5,7 +5,7 @@ import { NavFavorites } from "./nav-favorites.tsx"
 import { NavUser } from "./nav-user.tsx"
 import { TeamSwitcher } from "./team-switcher.tsx"
 import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail,} from "@/shared/components/ui/sidebar"
-import {type MenuItem, MenuName, useMenu, useNavigateSafe, useUserInfos} from "jopi-rewrite/uikit";
+import {type MenuItem, MenuName, useMenu, useRouterNavigate, useUserInfos} from "jopi-rewrite/uikit";
 import {LogIn} from "lucide-react";
 import * as ns_events from "jopi-node-space/ns_events";
 
@@ -15,7 +15,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const leftMenu = useMenu(MenuName.LEFT_MENU);
 
     const user = useUserInfos();
-    const navigate = useNavigateSafe();
+    const navigate = useRouterNavigate();
 
     const onLoginClick = () => {
         const currentUrl = location.pathname + location.search;

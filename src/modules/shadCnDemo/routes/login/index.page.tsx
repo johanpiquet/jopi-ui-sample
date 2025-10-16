@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigateSafe, useSearchParamsSafe, Composite, useUserInfos, useLogOutUser, useUseStateRefresh, useFormSubmit} from "jopi-rewrite/uikit";
+import {useRouterNavigate, useRouterSearchParams, Composite, useUserInfos, useLogOutUser, useUseStateRefresh, useFormSubmit} from "jopi-rewrite/uikit";
 
 import * as ns_translate from "jopi-node-space/ns_translate";
 import logo from "./logo.png";
@@ -12,8 +12,8 @@ const trWelcomeBack = ns_translate.translate("page.login.welcomeBack", {default:
 const trSignIn = ns_translate.translate("page.login.signIn", {default: "Sign in"});
 
 export default function() {
-    const navigate = useNavigateSafe();
-    const [searchParams] = useSearchParamsSafe();
+    const navigate = useRouterNavigate();
+    const searchParams = useRouterSearchParams();
     const returnUrl = searchParams.get('returnUrl') ? decodeURIComponent(searchParams.get('returnUrl')!) : '/';
     const [isAuhFailed, setIsAuhFailed] = React.useState(false);
 

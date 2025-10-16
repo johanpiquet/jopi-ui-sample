@@ -12,12 +12,12 @@ import {
 import {Avatar, AvatarFallback, AvatarImage,} from "@/shared/components/ui/avatar"
 import {DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger,} from "@/shared/components/ui/dropdown-menu"
 import {SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar} from "@/shared/components/ui/sidebar";
-import {type UiUserInfos, useNavigateSafe, useLogOutUser} from "jopi-rewrite/uikit";
+import {type UiUserInfos, useRouterNavigate, useLogOutUser} from "jopi-rewrite/uikit";
 
 export function NavUser({user}: { user: UiUserInfos }) {
   const { isMobile } = useSidebar()
   const logOutUser = useLogOutUser();
-  const navigate = useNavigateSafe();
+  const navigate = useRouterNavigate();
 
   const doLogOut = () => {
     logOutUser();

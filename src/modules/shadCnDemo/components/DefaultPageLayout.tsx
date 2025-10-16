@@ -3,7 +3,7 @@ import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPa
 import { Separator } from "@/shared/components/ui/separator"
 import {SidebarInset, SidebarProvider, SidebarTrigger} from "@/shared/components/ui/sidebar"
 import React, {type JSX} from "react";
-import {useMatchingMenuItem, useRouteChangeListener} from "jopi-rewrite/uikit";
+import {useMatchingMenuItem, useSendRouterLocationUpdateEvent} from "jopi-rewrite/uikit";
 
 function MyBreadcrumb() {
     const menuItem = useMatchingMenuItem();
@@ -61,6 +61,8 @@ function Layout({children}: { children: React.ReactNode}) {
 }
 
 export default function({children}: { children: React.ReactNode}) {
-    useRouteChangeListener();
+    // Will send the event "app.router.locationUpdated".
+    useSendRouterLocationUpdateEvent();
+
     return <Layout>{children}</Layout>;
 }
