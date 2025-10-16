@@ -15,14 +15,19 @@ function PageContent() {
             <div className="mb-20"></div>
 
             <JForm schema={formSchema} className="space-y-8" variants={myVariants}>
-                <JFormMessage isBefore={true} />
+
+                <JFormMessage isBefore={true}
+                              submittedMessage="Form has been submitted"
+                              errorMessage="An error occured (test)"
+                              fieldErrorMessage="Some value a invalide (test)"
+
+                />
                 <JAutoFormField name="username" />
                 <JAutoFormField name="password" />
                 <JAutoFormField name="age" />
                 <JAutoFormField name="allowNewsletter" />
 
                 <JFormStateListener ifNotSubmitted={<Button type="submit">Submit</Button> } />
-                <JFormMessage isBefore={false} />
             </JForm>
         </div>
     </>
