@@ -18,7 +18,6 @@ export default function(ctx: RouteServerContext) {
         // Allow testing the submit button hiding when submitting.
         await ns_timer.tick(1000);
 
-        //return req.jsonResponse({isOk: true, data});
-        return req.returnError500_ServerError();
+        return req.returnResultMessage(true);
     });
 }
