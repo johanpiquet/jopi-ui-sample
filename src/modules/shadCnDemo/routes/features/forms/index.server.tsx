@@ -4,7 +4,6 @@ import {RouteServerContext} from "jopi-rewrite";
 
 export default function(ctx: RouteServerContext) {
     ctx.onPOST(async req => {
-        //const data = await req.getReqData<FormValues>({dataSchema: formSchema});
         const data = await req.getBodyData<FormValues>();
 
         console.log("Server received:", data);
