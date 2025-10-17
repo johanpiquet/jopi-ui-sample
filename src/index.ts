@@ -16,6 +16,18 @@ jopiApp.startApp(import.meta, jopiEasy => {
             .add_module("shadCnDemo")
             .END_use_modules()
 
+        .add_SseEvent("/my-sse-event", {
+            getWelcomeMessage() {
+                return "hello world";
+            },
+
+            handler(controller) {
+                setInterval(() => {
+                    controller.send("my event");
+                }, 1000);
+            },
+        })
+
         // Add a JWT Token mechanism for user authentification
         // and user info retrieval.
         //
@@ -28,4 +40,5 @@ jopiApp.startApp(import.meta, jopiEasy => {
                     .DONE_use_simpleLoginPassword()
                 .DONE_setUserStore()
             .DONE_add_jwtTokenAuth()
+
     });

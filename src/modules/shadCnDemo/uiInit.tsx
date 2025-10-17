@@ -4,6 +4,8 @@ import {isBrowser} from "jopi-node-space/ns_what";
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
 import {AudioWaveform, Command, Frame, GalleryVerticalEnd, SquareTerminal} from "lucide-react";
 
+let eventSource: EventSource|undefined;
+
 // Note: the default class received is "ModuleInitContext_UI"
 // but ui-kit overrides the creation step to provide an instance of UiKitModule.
 //
@@ -12,6 +14,17 @@ export default function(myModule: UiKitModule) {
         myModule.events.enableEventSpying((name, e) => {
             //console.log(`Event spy - ${name}`, e);
         });
+    }
+
+    // SSE Event
+
+    if (myModule.isBrowserSide) {
+        eventSource = new EventSource('/my-sse-event');
+
+        eventSource.addEventListener('change', (e) => {
+            console.log('my-sse-event - Received event:', e.data);
+            //location.reload();
+        })
     }
 
     myModule.addUiInitializer(() => {
