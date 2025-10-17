@@ -19,7 +19,6 @@ import {
   useSidebar,
 } from "@/shared/components/ui/sidebar"
 import {useMenu} from "jopi-rewrite/uikit";
-import {useEffect} from "react";
 
 export function TeamSwitcher() {
   const teams = useMenu("teams");
