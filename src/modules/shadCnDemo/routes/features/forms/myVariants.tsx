@@ -212,6 +212,10 @@ export function FileSelectField(p: JFileSelectFieldProps) {
                 </div>
             </div>
 
+            {field.errorMessage && (
+                <div className="mt-2 text-destructive text-sm">{field.errorMessage}</div>
+            )}
+
             {fieldValue && (
                 <div className="mt-4 p-4 bg-muted/50 rounded-lg border">
                     <div className="flex items-center justify-between">
