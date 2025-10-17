@@ -1,5 +1,5 @@
 import React from "react";
-import {AdminPageLayout, JAutoFormField, JFormMessage, type SubmitFunction} from "jopi-rewrite/uikit";
+import {AdminPageLayout, JAutoFormField, JFormMessage, sendFormData, type SubmitFunction} from "jopi-rewrite/uikit";
 import {Button} from "@/shared/components/ui/button";
 import * as myVariants from "./myVariants.tsx";
 
@@ -7,12 +7,19 @@ import {JForm, JFormStateListener} from "jopi-rewrite/uikit";
 import {formSchema} from "./schema.ts";
 
 function PageContent() {
-    const onSubmit: SubmitFunction = (p) => {
+    const onSubmit: SubmitFunction = async (p) => {
+        console.log("onSubmit, data that will be send:", p.data);
+        let submitUrl = p.form.getSubmitUrl();
+        let formData = p.form.getFormData();
+
+        let response = await sendFormData(submitUrl, formData);
+        console.log("onSubmit, response:", response.statusText);
+
         return {
             isOk: true,
             isSubmitted: true,
             message: "Form has been submitted (from onSubmit)"
-        }
+        };
     }
 
     return <>

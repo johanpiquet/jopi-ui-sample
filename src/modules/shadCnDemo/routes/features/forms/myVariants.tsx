@@ -11,7 +11,6 @@ import {
 } from "jopi-rewrite/uikit";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import {cn} from "@/shared/lib/utils";
-import type {FileList} from "jopi-node-space/ns_schema";
 
 function MyLabel({field, ...p}: React.ComponentProps<typeof LabelPrimitive.Root> & {field: JFieldController}) {
     return <Label
@@ -121,7 +120,7 @@ export function FormMessage({message, ...p}: JFormMessageProps) {
 
 export function FileSelectField(p: JFileSelectFieldProps) {
     const field = useJFormField(p.name);
-    const fieldValue = field.value as FileList;
+    const fieldValue = field.value as File[];
 
     const [isDragOver, setIsDragOver] = React.useState(false);
     const fileInputRef = React.useRef<HTMLInputElement>(null);
@@ -143,7 +142,7 @@ export function FileSelectField(p: JFileSelectFieldProps) {
         const files = e.dataTransfer.files;
         if (files.length > 0) {
             debugger;
-            field.onChange(files);
+            field.onChange([...files]);
         }
     };
 
@@ -151,7 +150,7 @@ export function FileSelectField(p: JFileSelectFieldProps) {
         const files = e.target.files;
         if (files && files.length > 0) {
             debugger;
-            field.onChange(files);
+            field.onChange([...files]);
         }
     };
 
@@ -170,6 +169,7 @@ export function FileSelectField(p: JFileSelectFieldProps) {
     return (
         <div className="w-full">
             <input
+                name={field.name}
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileSelect}

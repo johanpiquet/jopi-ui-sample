@@ -17,7 +17,7 @@ export const formSchema = ns_schema.schema({
     }),
 
     age: ns_schema.number("Your age", false, {
-        //default: 18,
+        default: 18,
         minValue: 18,
         errorMessage_minValue: "You must be at least 18 years old."
     }),
