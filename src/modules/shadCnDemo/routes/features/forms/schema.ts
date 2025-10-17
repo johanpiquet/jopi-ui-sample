@@ -28,7 +28,9 @@ export const formSchema = ns_schema.schema({
         errorMessage_requireTrue: "You must accept the newsletter.",
         description: "By checking this box, you agree to our privacy policy and terms of use.",
         errorMessage_theValueIsInvalid: "You must accept the terms of use."
-    })
+    }),
+
+    photo: ns_schema.file("Photo", false),
 });
 
 export type FormValues = ns_schema.SchemaToType<typeof formSchema>;
