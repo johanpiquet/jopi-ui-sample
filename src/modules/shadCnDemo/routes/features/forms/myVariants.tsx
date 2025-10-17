@@ -107,8 +107,9 @@ export function FormMessage({message, ...p}: JFormMessageProps) {
     let t: UiText = "Form has errors";
 
     if (message.fieldErrors) {
-
         if (p.fieldErrorMessage) t = p.fieldErrorMessage;
+        else if (p.errorMessage) t = p.errorMessage;
+        else if (message.message) t = message.message;
         else t = "Some fields have errors";
     } else {
         if (p.errorMessage) t = p.errorMessage;

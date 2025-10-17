@@ -41,8 +41,6 @@ function PageContent() {
                 <JAutoFormField name="age" />
                 <JAutoFormField name="allowNewsletter" />
 
-                <JAutoFormField name="photo" />
-
                 <JFormStateListener ifNotSubmitted={<Button type="submit">Submit</Button> } />
             </JForm>
         </div>

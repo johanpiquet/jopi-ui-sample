@@ -17,7 +17,7 @@ export const formSchema = ns_schema.schema({
     }),
 
     age: ns_schema.number("Your age", false, {
-        default: 18,
+        //default: 18,
         minValue: 18,
         errorMessage_minValue: "You must be at least 18 years old."
     }),
@@ -30,7 +30,7 @@ export const formSchema = ns_schema.schema({
         errorMessage_theValueIsInvalid: "You must accept the terms of use."
     }),
 
-    photo: ns_schema.file("Photo", false),
+    //photo: ns_schema.file("Photo", false),
 });
 
 export type FormValues = ns_schema.SchemaToType<typeof formSchema>;
