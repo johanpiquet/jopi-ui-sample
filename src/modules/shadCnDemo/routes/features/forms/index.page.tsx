@@ -10,7 +10,6 @@ function PageContent() {
     const onSubmit: SubmitFunction = async (p) => {
         console.log("onSubmit, data that will be send:", p.data);
         return await p.form.sendFormData();
-        //return await p.form.sendJsonData();
     }
 
     return <>
