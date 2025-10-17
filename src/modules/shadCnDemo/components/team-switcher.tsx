@@ -18,15 +18,21 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/components/ui/sidebar"
-import type {MenuItem} from "jopi-rewrite/uikit";
+import {type MenuItem, useMenu} from "jopi-rewrite/uikit";
+import {useEffect} from "react";
 
-export function TeamSwitcher({teams}: { teams: MenuItem[] }) {
-  const { isMobile } = useSidebar()
-  const [activeTeam, setActiveTeam] = React.useState(teams[0])
+export function TeamSwitcher() {
+  const teams = useMenu("teams");
+  const { isMobile } = useSidebar();
+  const [activeTeam, setActiveTeam] = React.useState(teams ? teams[0] : undefined);
 
-  if (!activeTeam) {
-    return null
-  }
+  useEffect(() => {
+    if (teams && teams.length) {
+      setActiveTeam(teams[0]);
+    }
+  }, [teams]);
+
+  if (!activeTeam) return null;
 
   return (
     <SidebarMenu>

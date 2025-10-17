@@ -13,5 +13,5 @@ export default function Page() {
 }
 
 function Test() {
-    return <div className="text-green-400">Test 2</div>;
+    return <div className="text-yellow-400">Test 1</div>;
 }

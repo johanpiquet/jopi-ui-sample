@@ -10,10 +10,6 @@ import {LogIn} from "lucide-react";
 import * as ns_events from "jopi-node-space/ns_events";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const teamsMenu = useMenu("teams");
-    const favoriteMenu = useMenu("favorites");
-    const leftMenu = useMenu(MenuName.LEFT_MENU);
-
     const user = useUserInfos();
     const navigate = useRouterNavigate();
 
@@ -29,11 +25,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader>
-                <TeamSwitcher teams={teamsMenu}/>
+                <TeamSwitcher />
             </SidebarHeader>
             <SidebarContent>
-                <NavMain items={leftMenu} onClick={(item) => handleLinkClick(item, MenuName.LEFT_MENU)}/>
-                <NavFavorites favorites={favoriteMenu}/>
+                <NavMain onClick={(item) => handleLinkClick(item, MenuName.LEFT_MENU)}/>
+                <NavFavorites />
             </SidebarContent>
             <SidebarFooter>
                 {user ?
