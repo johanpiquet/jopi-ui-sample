@@ -30,7 +30,7 @@ export const formSchema = ns_schema.schema({
         errorMessage_theValueIsInvalid: "You must accept the terms of use."
     }),
 
-    //photo: ns_schema.file("Photo", false),
+    photo: ns_schema.file("Photo", false, {acceptFileType: "image/*, pdf"}),
 });
 
 export type FormValues = ns_schema.SchemaToType<typeof formSchema>;

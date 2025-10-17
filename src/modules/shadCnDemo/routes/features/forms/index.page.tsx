@@ -21,8 +21,8 @@ function PageContent() {
                    className="space-y-8" variants={myVariants}>
 
                 <JFormMessage isBefore={true}
-                              //submittedMessage="Form has been submitted (test)"
-                              //errorMessage="An error occured (test)"
+                              submittedMessage="Form has been submitted (test)"
+                              errorMessage="An error occured (test)"
                               fieldErrorMessage="Some value are invalide (test)"
                 />
 

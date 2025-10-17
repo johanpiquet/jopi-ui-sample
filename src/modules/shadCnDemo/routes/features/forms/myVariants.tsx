@@ -141,18 +141,12 @@ export function FileSelectField(p: JFileSelectFieldProps) {
         setIsDragOver(false);
 
         const files = e.dataTransfer.files;
-        if (files.length > 0) {
-            debugger;
-            field.onChange([...files]);
-        }
+        if (files.length > 0) field.onChange([...files]);
     };
 
     const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
-        if (files && files.length > 0) {
-            debugger;
-            field.onChange([...files]);
-        }
+        if (files && files.length > 0) field.onChange([...files]);
     };
 
     const handleClick = () => {
@@ -175,7 +169,7 @@ export function FileSelectField(p: JFileSelectFieldProps) {
                 ref={fileInputRef}
                 onChange={handleFileSelect}
                 className="hidden"
-                accept="*/*"
+                accept={field.acceptFileType || "*/*"}
             />
 
             <div
