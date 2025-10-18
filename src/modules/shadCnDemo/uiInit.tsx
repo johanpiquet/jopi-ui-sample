@@ -16,17 +16,6 @@ export default function(myModule: UiKitModule) {
         });
     }
 
-    // SSE Event
-
-    if (myModule.isBrowserSide) {
-        eventSource = new EventSource('/my-sse-event');
-
-        eventSource.addEventListener('change', (e) => {
-            console.log('my-sse-event - Received event:', e.data);
-            //location.reload();
-        })
-    }
-
     myModule.addUiInitializer(() => {
         console.log('Module A - UI initialized (Default)');
     });

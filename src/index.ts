@@ -25,7 +25,7 @@ jopiApp.startApp(import.meta, jopiEasy => {
                 let count = 0;
 
                 setInterval(() => {
-                    controller.send("change", "count: " + count++);
+                   // controller.send("change", "count: " + count++);
                 }, 1000);
             },
         })
