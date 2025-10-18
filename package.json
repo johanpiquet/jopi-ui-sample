@@ -21,7 +21,7 @@
     "clean": "rm -rf ./dist .turbo tsconfig.tsbuildinfo",
     "tsc": "npx tsc",
     "devNodeUI": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopin dist/index.js",
-    "devBunUI": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopib src/index.ts"
+    "devBunUI": "JOPI_LOG=1 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopib src/index.ts --inspect=4000"
   },
   "devDependencies": {
     "@types/bun": "latest",
