@@ -1,5 +1,5 @@
 import {UiKitModule, MenuName} from "jopi-rewrite/uikit";
-import {isBrowser} from "jopi-toolkit/ns_what";
+import {isBrowser} from "jopi-toolkit/jk_what";
 
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
 import {AudioWaveform, Command, Frame, GalleryVerticalEnd, SquareTerminal} from "lucide-react";

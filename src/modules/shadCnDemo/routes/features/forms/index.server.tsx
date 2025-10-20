@@ -1,5 +1,5 @@
 import {formSchema, type FormValues} from "./schema.ts";
-import * as ns_timer from "jopi-toolkit/ns_timer";
+import * as jk_timer from "jopi-toolkit/jk_timer";
 import {RouteServerContext} from "jopi-rewrite";
 
 export default function(ctx: RouteServerContext) {
@@ -15,7 +15,7 @@ export default function(ctx: RouteServerContext) {
         }
 
         // Allow testing the submit button hiding when submitting.
-        await ns_timer.tick(1000);
+        await jk_timer.tick(1000);
 
         return req.returnResultMessage(true);
     });

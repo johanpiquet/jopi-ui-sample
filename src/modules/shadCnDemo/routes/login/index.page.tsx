@@ -1,15 +1,15 @@
 import React from "react";
 import {useRouterNavigate, useRouterSearchParams, Composite, useUserInfos, useLogOutUser, useUseStateRefresh, useFormSubmit} from "jopi-rewrite/uikit";
 
-import * as ns_translate from "jopi-toolkit/ns_translate";
+import * as jk_translate from "jopi-toolkit/jk_translate";
 import logo from "./logo.png";
 
-const trInvalidIdentifier = ns_translate.translate("page.login.invalidIdentifierOrPassword", {default: "Invalid identifier2"});
-const trCheckMailOrPassword = ns_translate.translate("page.login.checkMailOrPassword", {default: "Check you e-mail and/or password"});
-const trRememberMe = ns_translate.translate("page.login.rememberMe", {default: "Remember me"});
-const trForgotPassword = ns_translate.translate("page.login.forgotPassword", {default: "Forgot password?"});
-const trWelcomeBack = ns_translate.translate("page.login.welcomeBack", {default: "Welcome back! Please sign in to continue"});
-const trSignIn = ns_translate.translate("page.login.signIn", {default: "Sign in"});
+const trInvalidIdentifier = jk_translate.translate("page.login.invalidIdentifierOrPassword", {default: "Invalid identifier2"});
+const trCheckMailOrPassword = jk_translate.translate("page.login.checkMailOrPassword", {default: "Check you e-mail and/or password"});
+const trRememberMe = jk_translate.translate("page.login.rememberMe", {default: "Remember me"});
+const trForgotPassword = jk_translate.translate("page.login.forgotPassword", {default: "Forgot password?"});
+const trWelcomeBack = jk_translate.translate("page.login.welcomeBack", {default: "Welcome back! Please sign in to continue"});
+const trSignIn = jk_translate.translate("page.login.signIn", {default: "Sign in"});
 
 export default function() {
     const navigate = useRouterNavigate();

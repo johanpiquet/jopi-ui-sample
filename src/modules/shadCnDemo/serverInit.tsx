@@ -1,7 +1,7 @@
 // The role of this file is to initialize the module once mounted.
 
 import {ModuleInitContext_Server} from "jopi-rewrite";
-import {EventPriority} from "jopi-toolkit/ns_events";
+import {EventPriority} from "jopi-toolkit/jk_events";
 
 export default function(modInit: ModuleInitContext_Server) {
     modInit.setModuleInfo({

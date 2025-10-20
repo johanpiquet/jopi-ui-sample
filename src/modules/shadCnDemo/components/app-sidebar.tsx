@@ -7,7 +7,7 @@ import { TeamSwitcher } from "./team-switcher.tsx"
 import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail,} from "@/shared/components/ui/sidebar"
 import {type MenuItem, MenuName, useRouterNavigate, useUserInfos} from "jopi-rewrite/uikit";
 import {LogIn} from "lucide-react";
-import * as ns_events from "jopi-toolkit/ns_events";
+import * as jk_events from "jopi-toolkit/jk_events";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const user = useUserInfos();
@@ -19,7 +19,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     };
 
     const handleLinkClick = (menuItem: MenuItem, menuName: string) => {
-        ns_events.sendEvent("app.menu.click", {menuName, menuItem});
+        jk_events.sendEvent("app.menu.click", {menuName, menuItem});
     };
 
     return (
