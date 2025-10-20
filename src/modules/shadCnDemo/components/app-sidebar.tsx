@@ -7,7 +7,7 @@ import { TeamSwitcher } from "./team-switcher.tsx"
 import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail,} from "@/shared/components/ui/sidebar"
 import {type MenuItem, MenuName, useRouterNavigate, useUserInfos} from "jopi-rewrite/uikit";
 import {LogIn} from "lucide-react";
-import * as ns_events from "jopi-node-space/ns_events";
+import * as ns_events from "jopi-toolkit/ns_events";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const user = useUserInfos();

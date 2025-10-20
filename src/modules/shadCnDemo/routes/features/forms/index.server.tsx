@@ -1,5 +1,5 @@
 import {formSchema, type FormValues} from "./schema.ts";
-import * as ns_timer from "jopi-node-space/ns_timer";
+import * as ns_timer from "jopi-toolkit/ns_timer";
 import {RouteServerContext} from "jopi-rewrite";
 
 export default function(ctx: RouteServerContext) {

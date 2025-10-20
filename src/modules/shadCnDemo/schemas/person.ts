@@ -1,4 +1,4 @@
-import * as ns_schema from "jopi-node-space/ns_schema";
+import * as ns_schema from "jopi-toolkit/ns_schema";
 
 export const Schema = ns_schema.schema({
     name: ns_schema.string("name", false),

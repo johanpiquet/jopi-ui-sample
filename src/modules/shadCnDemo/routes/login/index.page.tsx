@@ -1,7 +1,7 @@
 import React from "react";
 import {useRouterNavigate, useRouterSearchParams, Composite, useUserInfos, useLogOutUser, useUseStateRefresh, useFormSubmit} from "jopi-rewrite/uikit";
 
-import * as ns_translate from "jopi-node-space/ns_translate";
+import * as ns_translate from "jopi-toolkit/ns_translate";
 import logo from "./logo.png";
 
 const trInvalidIdentifier = ns_translate.translate("page.login.invalidIdentifierOrPassword", {default: "Invalid identifier2"});

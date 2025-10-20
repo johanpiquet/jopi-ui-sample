@@ -1,4 +1,4 @@
-import * as ns_schema from "jopi-node-space/ns_schema";
+import * as ns_schema from "jopi-toolkit/ns_schema";
 
 /**
  * It's the schema of the data we want to use in our form and send to our server.
