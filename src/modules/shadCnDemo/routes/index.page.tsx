@@ -1,5 +1,4 @@
 import {AdminPageLayout} from "jopi-rewrite/uikit";
-import Comp1 from "@/composites/29c805d2-d0b4-407f-851d-6d133b780432";
 
 export default function Page() {
     return <AdminPageLayout>
@@ -14,7 +13,5 @@ export default function Page() {
 }
 
 function Test() {
-    return <div>
-        {Comp1.map(Comp1 => <Comp1 />)}
-    </div>
+    return <div>Test</div>
 }
