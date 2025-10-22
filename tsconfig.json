@@ -28,7 +28,8 @@
     "baseUrl": ".",
 
     "paths": {
-      "@/shared/*": ["./src/shared/*"]
+      "@/shared/*": ["./src/shared/*"],
+      "@/events/*": ["./src/_jopiLinkerGen/events/*"]
     }
   },
 

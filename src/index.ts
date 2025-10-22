@@ -1,9 +1,14 @@
 import {jopiApp} from "jopi-rewrite";
 import {registerUiKit} from "jopi-rewrite/uikit";
 import myUsers from "./myUsers.json" with { type: "json" };
+import * as jk_events from "jopi-toolkit/jk_events";
+
+import "./_jopiLinkerGen/install.ts";
 
 // Allow using ui-kit features.
 registerUiKit();
+
+await jk_events.sendAsyncEvent("test.hello");
 
 //jopiApp.globalConfig().configure_bundler().dontEmbed_ReactJS().dontEmbed_ReactRouter();
 //jopiApp.globalConfig().configure_reactRouter().disableReactRouter();
