@@ -31,8 +31,7 @@
       "@/shared/*": ["./src/shared/*"],
       "@/events/*": ["./src/_jopiLinkerGen/events/*"],
       "@/composites/*": ["./src/_jopiLinkerGen/composites/*"],
-      "@/id/*": ["./src/_jopiLinkerGen/id/*"],
-      "@/linker/*": ["./src/_jopiLinkerGen/*"]
+      "@/id/*": ["./src/_jopiLinkerGen/id/*"]
     }
   },
 
