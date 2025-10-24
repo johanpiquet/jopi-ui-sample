@@ -4,6 +4,8 @@ temp
 .DS_Store
 __TODO.txt
 
+src/_jopiLinkerGen
+
 logs
 certs
 .turbo
