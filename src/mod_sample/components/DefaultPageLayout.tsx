@@ -1,4 +1,4 @@
-import { AppSidebar } from "../components/app-sidebar.tsx"
+import { AppSidebar } from "./app-sidebar.tsx"
 import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator} from "@/shared/components/ui/breadcrumb"
 import { Separator } from "@/shared/components/ui/separator"
 import {SidebarInset, SidebarProvider, SidebarTrigger} from "@/shared/components/ui/sidebar"

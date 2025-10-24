@@ -10,10 +10,7 @@ registerUiKit();
 
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.new_webSite()
-        .enable_automaticRoutes()
-
         .use_modules()
-            .add_module("shadCnDemo")
             .END_use_modules()
 
         .add_SseEvent("/my-sse-event", {
