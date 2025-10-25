@@ -1,4 +1,5 @@
 import {AdminPageLayout} from "jopi-rewrite/uikit";
+import cssUrl from "./my-styles.css";
 
 export default function Page() {
     return <AdminPageLayout>
