@@ -4,7 +4,7 @@ import {isBrowser} from "jopi-toolkit/jk_what";
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
 import {AudioWaveform, Command, Frame, GalleryVerticalEnd, SquareTerminal} from "lucide-react";
 
-// Note: the default class received is "ModuleInitContext_UI"
+// Note: the default class received is "ModuleInitContext"
 // but ui-kit overrides the creation step to provide an instance of UiKitModule.
 //
 export default function(myModule: UiKitModule) {
