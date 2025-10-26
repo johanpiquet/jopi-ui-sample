@@ -18,7 +18,6 @@ export default function(myModule: UiKitModule) {
         console.log('Module A - UI initialized (Default)');
     });
 
-    debugger;
     myModule.setComponentAlias({alias: "page.layout.admin", component: DefaultPageLayout});
 
     const menuManager = myModule.getMenuManager();
