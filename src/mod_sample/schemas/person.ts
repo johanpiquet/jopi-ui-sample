@@ -1,14 +1,14 @@
-import * as ns_schema from "jopi-toolkit/ns_schema";
+import * as jk_schema from "jopi-toolkit/jk_schema";
 
-export const Schema = ns_schema.schema({
-    name: ns_schema.string("name", false),
+export const Schema = jk_schema.schema({
+    name: jk_schema.string("name", false),
 });
 
-ns_schema.registerSchema(
+jk_schema.registerSchema(
     "d99e8745-9ae0-4de3-a23b-657203caa3fc", Schema,
     {
         title: "Person",
         description: "A person"
     });
 
-export type Type = ns_schema.SchemaToType<typeof Schema>;
+export type Type = jk_schema.SchemaToType<typeof Schema>;
