@@ -5,6 +5,6 @@ export default function() {
     //throw new Error("TEST");
 
     return <AdminPageLayout>
-        TEST2
+        TEST1
     </AdminPageLayout>
 }
