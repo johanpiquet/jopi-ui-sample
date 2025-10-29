@@ -1,5 +1,4 @@
 import {AdminPageLayout} from "jopi-rewrite/uikit";
-import cssUrl from "./my-styles.css";
 
 export default function Page() {
     return <AdminPageLayout>
@@ -14,5 +13,5 @@ export default function Page() {
 }
 
 function Test() {
-    return <div>Test</div>
+    return <div>Test 5</div>
 }
