@@ -13,5 +13,5 @@ export default function Page() {
 }
 
 function Test() {
-    return <div className="text-blue-400">Test ok</div>
+    return <div className="text-blue-400">Test 3</div>
 }
