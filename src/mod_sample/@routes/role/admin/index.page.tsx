@@ -1,4 +1,4 @@
-import {AdminPageLayout, RequireRoles} from "../../../../../../../__packages/jopi-rewrite/src/@uikit";
+import {AdminPageLayout, RequireRoles} from "jopi-rewrite/uikit";
 
 export default function() {
     return <AdminPageLayout>

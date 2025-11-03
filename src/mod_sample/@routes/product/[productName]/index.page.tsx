@@ -1,3 +1,6 @@
+import {usePageParams} from "jopi-rewrite/uikit";
+
 export default function Product() {
-    return <div>Product</div>;
+    const pageParams = usePageParams();
+    return <div>Product {JSON.stringify(pageParams)}</div>;
 }

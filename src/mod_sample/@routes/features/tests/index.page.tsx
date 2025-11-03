@@ -1,5 +1,5 @@
 import React from "react";
-import {AdminPageLayout} from "../../../../../../../__packages/jopi-rewrite/src/@uikit";
+import {AdminPageLayout} from "jopi-rewrite/uikit";
 
 export default function() {
     //throw new Error("TEST");
