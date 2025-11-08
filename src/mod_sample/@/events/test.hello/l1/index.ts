@@ -1,3 +1,3 @@
-export default function(e: any) {
-    console.log("Hello A");
+export default function(e: any, eventName: string) {
+    console.log("Hello l1", e, eventName);
 }

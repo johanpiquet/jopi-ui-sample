@@ -1,5 +1,6 @@
 import {UiKitModule, MenuName} from "jopi-rewrite/uikit";
 import {isBrowser} from "jopi-toolkit/jk_what";
+import testHelloEvent from "@/events/test.hello";
 
 import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
 import {AudioWaveform, Command, Frame, GalleryVerticalEnd, SquareTerminal} from "lucide-react";
@@ -13,6 +14,8 @@ export default function(myModule: UiKitModule) {
             //console.log(`Event spy - ${name}`, e);
         });
     }
+
+    testHelloEvent.send({});
 
     myModule.addUiInitializer(() => {
         console.log('Module A - UI initialized (Default)');
