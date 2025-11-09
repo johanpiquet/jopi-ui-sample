@@ -2,7 +2,7 @@ import {jopiApp} from "jopi-rewrite";
 import myUsers from "./myUsers.json" with { type: "json" };
 
 jopiApp.startApp(import.meta, jopiEasy => {
-    jopiEasy.use_webSite()
+    jopiEasy.create_creatWebSiteServer()
 
         .add_SseEvent("/my-sse-event", {
             getWelcomeMessage() {
