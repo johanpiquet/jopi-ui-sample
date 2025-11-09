@@ -1,17 +1,8 @@
 import {jopiApp} from "jopi-rewrite";
 import myUsers from "./myUsers.json" with { type: "json" };
 
-// Allow using ui-kit features.
-//registerUiKit();
-
-/*jopiApp.globalConfig()
-    .configure_tailwindProcessor()
-    .setGlobalCssFilePath("./global2.css");*/
-
 jopiApp.startApp(import.meta, jopiEasy => {
-    jopiEasy.new_webSite()
-        .use_modules()
-            .END_use_modules()
+    jopiEasy.use_webSite()
 
         .add_SseEvent("/my-sse-event", {
             getWelcomeMessage() {
