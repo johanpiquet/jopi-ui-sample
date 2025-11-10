@@ -1,4 +1,4 @@
-import type {WebSite} from "jopi-rewrite";
+import {JopiEasyWebSite} from "jopi-rewrite";
 
 import {JopiRequest} from "jopi-rewrite";
 
@@ -13,9 +13,9 @@ async function ipMiddleware(req: JopiRequest) {
     return req.returnError401_Unauthorized();
 }
 
-export default async function(webSite: WebSite) {
-    webSite.addGlobalMiddleware("GET", ipMiddleware, {
+export default async function(webSite: JopiEasyWebSite) {
+    /*webSite.addGlobalMiddleware("GET", ipMiddleware, {
         // Only url staring with "/tests/".
         regExp: /^\/tests\//
-    });
+    });*/
 }
