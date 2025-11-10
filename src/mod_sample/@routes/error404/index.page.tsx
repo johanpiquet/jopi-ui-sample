@@ -2,6 +2,6 @@ import React from "react";
 
 export default function() {
     return <div>
-        My 404 page
+        My 404 page (aaa)
     </div>
 }

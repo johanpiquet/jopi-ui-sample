@@ -1,12 +1,18 @@
-import {JopiRequest, RouteConfig} from "jopi-rewrite";
-
-async function ipMiddleware(req: JopiRequest) {
-    let ip = req.requestIP?.address;
-    console.log("Caller IP is", ip);
-    if (ip==="127.0.0.1") return null;
-    return req.returnError401_Unauthorized();
-}
+import {RouteConfig} from "jopi-rewrite";
 
 export default function (config: RouteConfig) {
-    config.onGET.addMiddleware(ipMiddleware);
+    config.onGET.cache_disableAutomaticCache();
+
+    config.onGET.cache_beforeCheckingCache(async req => {
+        console.log("beforeCheckingCache");
+    });
+
+    config.onGET.cache_beforeAddToCache(async (req, res) => {
+        console.log("beforeAddToCache");
+        return res;
+    });
+
+    config.onGET.cache_afterGetFromCache(async req => {
+        console.log("afterGetFromCache");
+    });
 }
