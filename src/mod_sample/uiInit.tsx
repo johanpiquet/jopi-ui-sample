@@ -9,8 +9,6 @@ import {AudioWaveform, Command, Frame, GalleryVerticalEnd, SquareTerminal} from 
 // but ui-kit overrides the creation step to provide an instance of UiKitModule.
 //
 export default function(myModule: UiKitModule) {
-    throw Error("boom");
-
     if (isBrowser) {
         myModule.events.enableEventSpying((name, e) => {
             //console.log(`Event spy - ${name}`, e);
