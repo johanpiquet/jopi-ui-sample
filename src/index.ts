@@ -3,20 +3,11 @@ import myUsers from "./myUsers.json" with { type: "json" };
 
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.create_creatWebSiteServer()
+        .enable_cors()
+            .add_allowedHost("http://mywebsiteB")
 
-        .add_SseEvent("/my-sse-event", {
-            getWelcomeMessage() {
-                return "hello world";
-            },
-
-            handler(controller) {
-                let count = 0;
-
-                setInterval(() => {
-                   // controller.send("change", "count: " + count++);
-                }, 1000);
-            },
-        })
+            .disable_cors()
+            .DONE_enableCors()
 
         // Add a JWT Token mechanism for user authentification
         // and user info retrieval.
