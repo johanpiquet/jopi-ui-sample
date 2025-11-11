@@ -1,3 +1,3 @@
 export default function() {
-    return "a2";
+    return <div>a2</div>;
 }
