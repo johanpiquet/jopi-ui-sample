@@ -1,5 +1,4 @@
 import {JopiEasyWebSite} from "jopi-rewrite";
-
 import {JopiRequest} from "jopi-rewrite";
 
 async function ipMiddleware(req: JopiRequest) {
@@ -14,8 +13,17 @@ async function ipMiddleware(req: JopiRequest) {
 }
 
 export default async function(webSite: JopiEasyWebSite) {
-    /*webSite.addGlobalMiddleware("GET", ipMiddleware, {
-        // Only url staring with "/tests/".
-        regExp: /^\/tests\//
-    });*/
+    webSite.configure_middlewares()
+        .add_middleware(
+            // Apply to GET call method only
+            // You can also use "*" or undefined
+            // if you want to apply to all methods.
+            "GET",
+            
+            // Our function.
+            ipMiddleware, {
+                // Only url starting with "/tests/".
+                regExp: /^\/tests\//
+            }
+        );
 }

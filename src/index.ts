@@ -3,6 +3,10 @@ import myUsers from "./myUsers.json" with { type: "json" };
 
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.create_creatWebSiteServer()
+        .configure_middlewares()
+            .add_middleware("GET", req => {return null;})
+            .END_configure_middlewares()
+
         .configure_cache()
             //.use_fileSystemCache(".cache")
             .add_cacheRules({
@@ -20,7 +24,7 @@ jopiApp.startApp(import.meta, jopiEasy => {
         // Add a JWT Token mechanism for user authentification
         // and user info retrieval.
         //
-        .add_jwtTokenAuth()
+        .enable_jwtTokenAuth()
             // WARNING: you must change this key!
             .step_setPrivateKey("my-private-key")
             .step_setUserStore()
@@ -28,5 +32,5 @@ jopiApp.startApp(import.meta, jopiEasy => {
                     .addMany(myUsers)
                     .DONE_use_simpleLoginPassword()
                 .DONE_setUserStore()
-            .DONE_add_jwtTokenAuth()
+            .DONE_enable_jwtTokenAuth()
     });
