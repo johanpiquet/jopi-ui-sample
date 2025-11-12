@@ -2,6 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "declaration": true,
+    "preserveSymlinks": true,
 
     "outDir": "./dist",
     "rootDir": "./src",
