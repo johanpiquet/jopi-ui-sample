@@ -1,4 +1,5 @@
-import {AdminPageLayout, RequireRoles} from "jopi-rewrite/uikit";
+import {RequireRoles} from "jopi-rewrite/uikit";
+import AdminPageLayout from "@/uiBlocks/page.layout.admin";
 
 export default function() {
     return <AdminPageLayout>

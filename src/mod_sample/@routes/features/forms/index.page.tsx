@@ -1,7 +1,8 @@
 import React from "react";
-import {AdminPageLayout, JAutoFormField, JFormMessage, type SubmitFunction} from "jopi-rewrite/uikit";
+import {JAutoFormField, JFormMessage, type SubmitFunction} from "jopi-rewrite/uikit";
 import {Button} from "@/shared/components/ui/button";
 import * as myVariants from "./myVariants.tsx";
+import AdminPageLayout from "@/uiBlocks/page.layout.admin";
 
 import {JForm, JFormStateListener} from "jopi-rewrite/uikit";
 import {formSchema} from "./schema.ts";
