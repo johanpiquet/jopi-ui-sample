@@ -2,7 +2,6 @@ import {UiKitModule, MenuName} from "jopi-rewrite/uikit";
 import {isBrowser} from "jopi-toolkit/jk_what";
 import testHelloEvent from "@/events/test.hello";
 
-import DefaultPageLayout from "./components/DefaultPageLayout.tsx";
 import {AudioWaveform, Command, Frame, GalleryVerticalEnd, SquareTerminal} from "lucide-react";
 
 // Note: the default class received is "ModuleInitContext"
@@ -20,8 +19,6 @@ export default function(myModule: UiKitModule) {
     myModule.addUiInitializer(() => {
         console.log('Module A - UI initialized (Default)');
     });
-
-    myModule.setComponentAlias({alias: "page.layout.admin", component: DefaultPageLayout});
 
     const menuManager = myModule.getMenuManager();
 

@@ -1,7 +1,7 @@
-import { AppSidebar } from "./app-sidebar.tsx"
-import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator} from "@/shared/components/ui/breadcrumb"
-import { Separator } from "@/shared/components/ui/separator"
-import {SidebarInset, SidebarProvider, SidebarTrigger} from "@/shared/components/ui/sidebar"
+import { AppSidebar } from "../../../components/app-sidebar.tsx";
+import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator} from "@/shared/components/ui/breadcrumb";
+import { Separator } from "@/shared/components/ui/separator";
+import {SidebarInset, SidebarProvider, SidebarTrigger} from "@/shared/components/ui/sidebar";
 import React, {type JSX} from "react";
 import {useMatchingMenuItem, useSendRouterLocationUpdateEvent} from "jopi-rewrite/uikit";
 
@@ -14,7 +14,7 @@ function MyBreadcrumb() {
     const B = menuItem.breadcrumb;
 
     if (typeof(B) === "function") {
-            return <B />
+        return <B />
     } else if (B instanceof Array) {
         const list = [...B];
         let lastTitle = list.pop();
