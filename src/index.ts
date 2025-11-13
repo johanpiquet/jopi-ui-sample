@@ -4,7 +4,7 @@ import myUsers from "./myUsers.json" with { type: "json" };
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.create_creatWebSiteServer()
         .configure_behaviors()
-            .removeTrailingSlashs()
+            .removeTrailingSlashs(true)
             .END_configure_behaviors()
 
         .enable_cors()
