@@ -3,17 +3,9 @@ import myUsers from "./myUsers.json" with { type: "json" };
 
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.create_creatWebSiteServer()
-        .configure_middlewares()
-            .add_middleware("GET", req => {return null;})
-            .END_configure_middlewares()
-
-        .configure_cache()
-            //.use_fileSystemCache(".cache")
-            .add_cacheRules({
-                regExp: /\/users\/.*$/,
-                disableAutomaticCache: true
-            })
-            .END_configure_cache()
+        .configure_behaviors()
+            .removeTrailingSlashs()
+            .END_configure_behaviors()
 
         .enable_cors()
             .add_allowedHost("http://mywebsiteB")
