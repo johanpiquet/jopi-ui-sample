@@ -1,5 +1,5 @@
 import {JopiRequest} from "jopi-rewrite";
-import type {FormValues} from "./schema";
+import type {FormValues} from "./schema.ts";
 import * as jk_timer from "jopi-toolkit/jk_timer";
 
 export default async function(req: JopiRequest) {
@@ -10,7 +10,7 @@ export default async function(req: JopiRequest) {
     let photo = data.photo;
     //
     if (photo instanceof File) {
-        console.log("My file:", await photo.text());
+        console.log("My file:", await photo.bytes());
     }
 
     // Allow testing the submit button hiding when submitting.

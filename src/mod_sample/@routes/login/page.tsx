@@ -1,5 +1,5 @@
 import React from "react";
-import {useRouterNavigate, useRouterSearchParams, Composite, useUserInfos, useLogOutUser, useUseStateRefresh, useFormSubmit} from "jopi-rewrite/uikit";
+import {useRouterNavigate, useRouterSearchParams, Composite, useUserInfos, useLogOutUser, useUserStateRefresh, useFormSubmit} from "jopi-rewrite/uikit";
 
 import * as jk_translate from "jopi-toolkit/jk_translate";
 import logo from "./logo.png";
@@ -19,7 +19,7 @@ export default function() {
 
     const isLoggedIn = useUserInfos();
     const logOutUser = useLogOutUser();
-    const declareUserStateChange = useUseStateRefresh();
+    const declareUserStateChange = useUserStateRefresh();
 
     const [submitForm, _] = useFormSubmit((res) => {
         if (res.isOk) {
