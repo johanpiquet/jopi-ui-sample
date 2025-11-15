@@ -85,7 +85,7 @@ L'objectif est de permettre de comprendre comment les routes HTTP sont définies
 
 ---
 
-### 1. Structure de Base
+### Structure de Base
 
 Le système de routage est basé sur la **structure des dossiers** au sein de chaque module.
 
@@ -196,6 +196,33 @@ export default async function(req: JopiRequest) {
 }
 ```
 
+### Restriction d'accès
+
+Il est possible de définir des restrictions d'accès pour une route, afin d'imposer une liste de rôles que
+l'utilisateur connecté doit posséder. La manière d'imposer une restriction, se fait à travers des fichiers dont le
+nom est analysé et interprété.
+
+Ces fichiers ont la nomenclature suivante: `[httpVerb]NeedRole_[roleName].cond`.
+* La partie `[httpVerb]` est optionnelle.
+  * Elle indique le verbe HTTP sur lequel la restriction porte (`get`/`post`/...).
+  * Elle est toujours indiquée en minuscule.
+* La partie `[roleName]` est obligatoire.
+  * Elle indique quel rôle est requis.
+
+**Exemple**
+* Le fichier `@routes/my/route/putNeedRole_admin.cond` indique que l'appelle `PUT /my/route` nécessite que l'appelant
+  ait le rôle 'admin'.
+* Le fichier `@routes/my/route/getNeedRole_writer.cond` indique que l'appelle `GET /my/route` nécessite que l'appelant
+  ait le rôle 'writer'.
+* Le fichier `@routes/my/other/route/needRole_reader.cond` indique que tous les appels à la `/my/other/route`
+  nécessitent que l'appelant ait le rôle 'reader', quelque-soi la méthode HTTP.
+
+Si plusieurs contraintes sont définies, alors l'utilisateur doit remplir l'ensemble des contraintes.
+
+**Exemple**
+Si pour une route j'ai le fichier `getNeedRole_writer.cond` et le fichier `needRole_reader.cond` alors l'appelant
+faisant un appel GET doit avoir les rôles `writer` et `reader`. Il doit posséder ces deux rôles afin d'être autorisé.
+
 ### Les fichiers `page.tsx`
 
 Chaque route peut exporter un fichier `page.tsx`. Il est appelé lors d'un appel HTTP de type GET.
@@ -245,6 +272,14 @@ La fonction exposée par le fichier `page.tsx` reçoit deux paramètres :
       * La route `@routes/user/[usergroup]/[userName]` définit deux paramètres (`userGroup` et `userName`).
       * Pour l'url `/user/admin/johan` la variable `param` reçoit la valeur `{userGroup: "admin", userName: "johan"}`.
 
+### Mise en cache des fichiers `page.tsx`
+
+Le fichier `page.tsx` exporte un composant React.js qui est transformé en HTML par le serveur. Parce que cette 
+opération est coûteuse en ressources, le résultat du calcul est automatiquement mis en cache.
+
+Le fichier `cache.disable` permet de désactiver ce cache pour une route.
+
+**Exemple** Le fichier `@routes/product/search/cache.disable` permet de désactiver le cache pour la route `product/search`.
 
 ## Structure d'une application
 
@@ -283,8 +318,9 @@ plugins = [
 Ce fichier permet d'initialiser Tailwind.css et de configurer ses comportements.
 
 Son contenu doit contenir les éléments suivants:
+
 ```CSS
-@import "tailwindcss";
+@import "../../../node_modules/tailwindcss/dist/lib.d.mts";
 ```
 
 #### Le fichier `package.json`
