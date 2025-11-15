@@ -244,3 +244,141 @@ La fonction exposée par le fichier `page.tsx` reçoit deux paramètres :
     * Example:
       * La route `@routes/user/[usergroup]/[userName]` définit deux paramètres (`userGroup` et `userName`).
       * Pour l'url `/user/admin/johan` la variable `param` reçoit la valeur `{userGroup: "admin", userName: "johan"}`.
+
+
+## Structure d'une application
+
+Cette section décrit la structure de l'application avec ses principaux fichiers et dossiers.
+
+### Le dossier racine du projet
+
+Voici la liste et le rôle des fichiers à la racine du projet.
+
+```
+|- package.json      < Le projet node.js
+|- tsconfig.json     < Les règles typescript
+|- src/              < Contient les sources du projet en TypeScript
+|- dist/             < Le dossier src/ compilé de TypeScript vers JavaScript
+|- bunfig.toml       < Contient des règles particulières pour Bun.js
+|- global.css        < Contient des règles CSS pour Tailwind CSS
+```
+
+#### Le fichier `bunfig.toml`
+
+Ce fichier permet de configurer le comportement de **bun.js**
+
+Son contenu doit contenir les éléments suivants:
+```toml
+[serve.static]
+plugins = [
+    # Allow compiling Tailwind.
+    "bun-plugin-tailwind",
+    # Add jopi-rewrite requirements.
+    "jopi-rewrite/bun-server-static"
+]
+```
+
+#### Le fichier `global.css`
+
+Ce fichier permet d'initialiser Tailwind.css et de configurer ses comportements.
+
+Son contenu doit contenir les éléments suivants:
+```CSS
+@import "tailwindcss";
+```
+
+#### Le fichier `package.json`
+
+Ce fichier définit notre projet node.js / bun.js.
+Il doit contenir les éléments suivant:
+
+```json
+{
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=0 npx jopib src/index.ts",
+    "startNode": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=0 npx jopin dist/index.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6"
+  },
+  "dependencies": {
+    "jopi-rewrite": "latest"
+  },
+  "jopi": {
+    "webSiteUrl": "http://127.0.0.1:3000"
+  }
+}
+```
+
+La valeur `webSiteUrl` indique l'url du site internet devant être écouté.
+Cette valeur est optionnelle si la variabl d'environnement `JOPI_WEBSITE_LISTENING_URL` ou `JOPI_WEBSITE_URL` est définie.
+
+#### Le fichier `tsconfig.json`
+
+Ce fichier définit les règles de compilation pour TypeScript.
+Il est responsable de définir comment compiler le dossier '/src' vers le dossier '/dist'.
+
+Il doit contenir les éléments suivants:
+```json
+{
+  "compilerOptions": {
+      "sourceMap": true,
+      "declaration": true,
+      "preserveSymlinks": true,
+  
+      "types": ["jopi-rewrite/types", "@types/bun"],
+      "baseUrl": ".",
+  
+      "paths": {"@/*": ["./src/_jopiLinkerGen/*"]},
+
+      "outDir": "./dist",
+      "rootDir": "./src",
+  
+      "lib": ["ES2022", "DOM", "DOM.Iterable"],
+  
+      "jsx": "react-jsx",
+      "target": "ESNext",
+      "module": "ESNext",
+      "moduleResolution": "Bundler",
+
+      "strict": true,
+      "skipLibCheck": true,
+      "noEmitOnError": false
+  },
+
+  "include": ["./src/**/*.ts","./src/**/*.tsx"],
+  "exclude": ["node_modules","dist"]
+}
+```
+
+### Le dossier `src/`
+
+Voici la liste et le rôle des fichiers à la racine du dossier 'src/'.
+
+```
+|- _jopiLinkerGen    < Un contenu généré dynamiquement par le compilateur interne
+|- index.ts          < Le point d'entrée de l'application.
+|- mod_moduleA       < Un module
+|- mod_otherMod      < Un autre module
+```
+
+Le dossier `_jopiLinkerGen` contient du code source qui est généré dynamiquement par l'application au démarrage.
+Il ne faut jamais modifier manuellement le contenu de ce dossier.
+
+#### Le fichier `index.ts`
+
+Ce fichier est le point d'entrée du programme, celui qui est directement appelé lorsque l'application démarre.
+
+Voici un exemple de contenu minimaliste.
+
+```typescript
+import {jopiApp} from "jopi-rewrite";
+
+jopiApp.startApp(import.meta, jopiEasy => {
+    jopiEasy.create_creatWebSiteServer();
+});
+```
