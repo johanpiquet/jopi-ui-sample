@@ -1,5 +1,4 @@
 import {jopiApp} from "jopi-rewrite";
-import myUsers from "./myUsers.json" with { type: "json" };
 
 jopiApp.startApp(import.meta, jopiEasy => {
     jopiEasy.create_creatWebSiteServer()
