@@ -22,7 +22,7 @@
     "tsc": "npx tsc",
     "linker": "npx jopi linker",
     "devNodeUI": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopin dist/index.js",
-    "devBunUI": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=0 npx jopib src/index.ts --inspect=4000"
+    "devBunUI": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopib src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
