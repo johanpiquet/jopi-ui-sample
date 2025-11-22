@@ -2,6 +2,6 @@ import React from "react";
 
 export default function() {
     return <div>
-        My 401 page
+        My custom 401 page
     </div>
 }

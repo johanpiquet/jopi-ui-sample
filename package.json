@@ -20,13 +20,14 @@
     "build": "rm -rf ./dist; npx tsc",
     "clean": "rm -rf ./dist .turbo tsconfig.tsbuildinfo",
 
-    "jopiWatch_node": "npx tsc",
-    "jopiBuild_node": "npx tsc",
+    "_jopiWatch_node": "npx tsc",
+    "_jopiBuild_node": "npx tsc",
 
     "tsc": "npx tsc",
     "linker": "npx jopi linker",
-    "devNodeUI": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopin dist/index.js",
-    "devBunUI": "JOPI_LOG=0 JOPI_DEV=0 JOPI_DEV_UI=1 npx jopib src/index.ts"
+
+    "devNodeUI": "JOPI_LOG=0 JOPI_DEV=1 JOPI_DEV_UI=0 npx jopin dist/index.js",
+    "devBunUI": "JOPI_LOG=0 JOPI_DEV=1 JOPI_DEV_UI=0 npx jopib src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
